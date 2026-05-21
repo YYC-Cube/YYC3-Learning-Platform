@@ -38,6 +38,7 @@ const envSchema = z.object({
     .min(1, 'DB_PASS 不能为空')
     .refine(
       (val) => {
+        if (process.env.NEXT_PHASE === 'phase-production-build') return true;
         if (process.env.NODE_ENV === 'production')
           return val.length > 0 && val !== 'your_secure_password_here';
         return true;
@@ -77,6 +78,7 @@ const envSchema = z.object({
     .min(32, 'JWT_SECRET 至少需要32个字符')
     .refine(
       (val) => {
+        if (process.env.NEXT_PHASE === 'phase-production-build') return true;
         if (process.env.NODE_ENV === 'production') return val.length >= 32;
         return true;
       },
@@ -84,7 +86,10 @@ const envSchema = z.object({
     )
     .optional()
     .default(() => {
-      if (process.env.NODE_ENV === 'production') {
+      if (
+        process.env.NODE_ENV === 'production' &&
+        process.env.NEXT_PHASE !== 'phase-production-build'
+      ) {
         throw new Error('生产环境必须设置 JWT_SECRET 环境变量');
       }
       return 'dev-only-insecure-jwt-secret-do-not-use-in-production';
@@ -144,6 +149,14 @@ function validateEnv(): z.infer<typeof envSchema> {
   try {
     return envSchema.parse(process.env);
   } catch (error) {
+    if (process.env.NEXT_PHASE === 'phase-production-build') {
+      return envSchema.parse({
+        ...process.env,
+        NODE_ENV: process.env.NODE_ENV || 'production',
+        JWT_SECRET: process.env.JWT_SECRET || 'build-time-dummy-key-not-for-runtime-xxxx',
+        DB_PASS: process.env.DB_PASS || 'build-dummy',
+      });
+    }
     if (error instanceof z.ZodError) {
       const errors = error.errors.map((err) => ({
         path: err.path.join('.'),

@@ -214,9 +214,17 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build application
-        run: pnpm run build
+        run: pnpm run build --no-turbopack
         env:
           NEXT_PUBLIC_APP_VERSION: ${{ github.sha }}
+          JWT_SECRET: ci-build-dummy-key
+          JWT_EXPIRES_IN: 7d
+          BCRYPT_ROUNDS: 10
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USER: dummy
+          DB_PASS: dummy
+          DB_NAME: dummy
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4

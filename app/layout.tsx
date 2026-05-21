@@ -10,18 +10,16 @@
  */
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
-import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import {
+  BottomNav,
+  AIAssistantProvider,
+  PerformanceMonitor,
+} from '@/app/providers/DynamicProviders';
 import './mobile-styles.css';
-
-const BottomNav = dynamic(() => import('@/components/bottom-nav'), { ssr: false });
-const AIAssistantProvider = dynamic(() => import('@/app/providers/AIAssistantProvider'), {
-  ssr: false,
-});
-const PerformanceMonitor = dynamic(() => import('@/components/PerformanceMonitor'), { ssr: false });
 
 const inter = Inter({ subsets: ['latin'] });
 
