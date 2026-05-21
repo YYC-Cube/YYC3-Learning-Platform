@@ -47,6 +47,12 @@ jobs:
           export { default as AIAssistantProvider } from "@/app/providers/AIAssistantProvider"
           export { default as PerformanceMonitor } from "@/components/PerformanceMonitor"
           EOFILE
+          rm -rf app/api
+          rm -rf app/courses/\[id\]
+          rm -rf app/exam/\[id\]
+          rm -f middleware.ts
+          cp next.config.js next.config.js.bak
+          node scripts/patch-export.js
 
       - name: Build for GitHub Pages (static export)
         env:
@@ -62,17 +68,6 @@ jobs:
           DB_PASS: dummy-dummy-password-not-real
           DB_NAME: dummy
         run: |
-          cp next.config.js next.config.js.bak
-          node -e "
-          const cfg = require('./next.config.js');
-          cfg.output = 'export';
-          cfg.images = cfg.images || {};
-          cfg.images.unoptimized = true;
-          delete cfg.rewrites;
-          delete cfg.redirects;
-          delete cfg.headers;
-          require('fs').writeFileSync('next.config.js', 'module.exports = ' + JSON.stringify(cfg, null, 2));
-          "
           pnpm build
           mv next.config.js.bak next.config.js
 
