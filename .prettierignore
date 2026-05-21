@@ -9,3 +9,5 @@ dist/
 build/
 *.min.js
 *.min.css
+next-env.d.ts
+tsconfig.tsbuildinfo
