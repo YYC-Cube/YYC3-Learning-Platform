@@ -75,6 +75,17 @@ jobs:
         run: pnpm exec vitest run --coverage
         env:
           CI: true
+          NODE_ENV: test
+          JWT_SECRET: ci-test-jwt-secret-key-for-testing-only
+          JWT_EXPIRES_IN: 1d
+          BCRYPT_ROUNDS: 4
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USER: test
+          DB_PASS: test
+          DB_NAME: test
+          NEXT_PUBLIC_APP_URL: http://localhost:3200
+          NEXT_PUBLIC_API_URL: http://localhost:3200/api
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
