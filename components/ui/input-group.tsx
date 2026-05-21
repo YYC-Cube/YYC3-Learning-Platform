@@ -1,4 +1,16 @@
+/**
+ * @fileoverview UI组件 · input-group.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 'use client'
+
+/**
+ * @fileoverview 输入框组合组件
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT */
 
 import * as React from 'react'
 import { cva, type VariantProps } from 'class-variance-authority'

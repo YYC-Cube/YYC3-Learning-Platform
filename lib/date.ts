@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 工具函数/库 · date.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 import { format, formatDistance, formatRelative } from "date-fns"
 import { zhCN } from "date-fns/locale"
 

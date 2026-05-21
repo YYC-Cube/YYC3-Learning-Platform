@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · skip-link.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import type React from "react"

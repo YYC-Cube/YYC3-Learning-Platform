@@ -1,23 +1,30 @@
+/**
+ * @fileoverview 页面组件 · page.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { 
-  TrendingUp, 
-  ArrowLeft, 
-  Download, 
-  Filter, 
-  RefreshCw, 
-  BarChart2, 
-  PieChart,  // 未使用，可考虑删除
-  Star, 
-  Clock, 
-  CheckCircle, 
-  ArrowUpRight, 
+import {
+  ArrowLeft,
+  ArrowRight // 补充缺失的导入
+  ,
+
+  ArrowUpRight,
+  BarChart2,
   BookOpen,
-  ArrowRight  // 补充缺失的导入
+  CheckCircle,
+  Clock,
+  Download,
+  Filter,
+  RefreshCw,
+  Star,
+  TrendingUp
 } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function AnalyticsPage() {
   const [timeRange, setTimeRange] = useState('30d');
@@ -67,8 +74,6 @@ export default function AnalyticsPage() {
     { week: '第4周', efficiency: 88, focus: 90, retention: 85 },
   ];
 
-  const COLORS = ['#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444'];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-blue-50 to-cyan-50 pb-20">
       <div className="container mx-auto px-4 py-6">
@@ -108,30 +113,30 @@ export default function AnalyticsPage() {
         {/* 时间范围选择 */}
         <div className="flex items-center space-x-2 mb-6">
           <span className="text-sm font-medium text-gray-700">时间范围:</span>
-          <Button 
-            variant={timeRange === '7d' ? 'default' : 'outline'} 
-            size="sm" 
+          <Button
+            variant={timeRange === '7d' ? 'default' : 'outline'}
+            size="sm"
             onClick={() => setTimeRange('7d')}
           >
             7天
           </Button>
-          <Button 
-            variant={timeRange === '30d' ? 'default' : 'outline'} 
-            size="sm" 
+          <Button
+            variant={timeRange === '30d' ? 'default' : 'outline'}
+            size="sm"
             onClick={() => setTimeRange('30d')}
           >
             30天
           </Button>
-          <Button 
-            variant={timeRange === '90d' ? 'default' : 'outline'} 
-            size="sm" 
+          <Button
+            variant={timeRange === '90d' ? 'default' : 'outline'}
+            size="sm"
             onClick={() => setTimeRange('90d')}
           >
             90天
           </Button>
-          <Button 
-            variant={timeRange === 'all' ? 'default' : 'outline'} 
-            size="sm" 
+          <Button
+            variant={timeRange === 'all' ? 'default' : 'outline'}
+            size="sm"
             onClick={() => setTimeRange('all')}
           >
             全部
@@ -245,7 +250,7 @@ export default function AnalyticsPage() {
                 {/* 坐标轴 */}
                 <line x1="50" y1="250" x2="550" y2="250" stroke="#e5e7eb" strokeWidth="2" />
                 <line x1="50" y1="50" x2="50" y2="250" stroke="#e5e7eb" strokeWidth="2" />
-                
+
                 {/* Y轴刻度 */}
                 {[0, 1, 2, 3, 4, 5].map(hour => (
                   <g key={hour}>
@@ -253,7 +258,7 @@ export default function AnalyticsPage() {
                     <text x="40" y={250 - hour * 40 + 4} fontSize="10" fill="#9ca3af" textAnchor="end">{hour}h</text>
                   </g>
                 ))}
-                
+
                 {/* X轴刻度和标签 */}
                 {studyTimeData.map((data, index) => {
                   const x = 50 + index * 35;
@@ -262,20 +267,20 @@ export default function AnalyticsPage() {
                     <g key={index}>
                       <line x1={x} y1={250} x2={x} y2={255} stroke="#e5e7eb" />
                       <text x={x} y={270} fontSize="10" fill="#9ca3af" textAnchor="middle">{data.date}</text>
-                      
+
                       {/* 柱状图 */}
                       <rect x={x - 10} y={y} width={20} height={250 - y} fill="#3b82f6" rx="2" opacity="0.7" />
                       <circle cx={x} cy={y} r={4} fill="#3b82f6" />
                     </g>
                   );
                 })}
-                
+
                 {/* 趋势线 */}
-                <path 
-                  d={studyTimeData.map((data, index) => `M${50 + index * 35},${250 - data.hours * 40}`).join(' L')} 
-                  stroke="#3b82f6" 
-                  strokeWidth="2" 
-                  fill="none" 
+                <path
+                  d={studyTimeData.map((data, index) => `M${50 + index * 35},${250 - data.hours * 40}`).join(' L')}
+                  stroke="#3b82f6"
+                  strokeWidth="2"
+                  fill="none"
                 />
               </svg>
             </div>
@@ -308,8 +313,8 @@ export default function AnalyticsPage() {
                     <span className="text-sm font-medium text-gray-800">{course.progress}%</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full" 
+                    <div
+                      className="bg-gradient-to-r from-blue-500 to-indigo-600 h-2 rounded-full"
                       style={{ width: `${course.progress}%` }}
                     ></div>
                   </div>
@@ -330,30 +335,30 @@ export default function AnalyticsPage() {
               <svg viewBox="0 0 240 240" className="w-full h-64">
                 {/* 技能圆环图 */}
                 {skillDistributionData.map((skill, index) => {
-                  const startAngle = index === 0 
-                    ? 0 
+                  const startAngle = index === 0
+                    ? 0
                     : skillDistributionData.slice(0, index).reduce((sum, s) => sum + s.value, 0) * 3.6;
                   const endAngle = startAngle + skill.value * 3.6;
-                  
+
                   const startX = 120 + 80 * Math.cos((startAngle - 90) * Math.PI / 180);
                   const startY = 120 + 80 * Math.sin((startAngle - 90) * Math.PI / 180);
                   const endX = 120 + 80 * Math.cos((endAngle - 90) * Math.PI / 180);
                   const endY = 120 + 80 * Math.sin((endAngle - 90) * Math.PI / 180);
-                  
+
                   const largeArcFlag = skill.value > 50 ? 1 : 0;
-                  
+
                   return (
                     <g key={index}>
-                      <path 
-                        d={`M 120,120 L ${startX},${startY} A 80,80 0 ${largeArcFlag},1 ${endX},${endY} Z`} 
-                        fill={skill.color} 
+                      <path
+                        d={`M 120,120 L ${startX},${startY} A 80,80 0 ${largeArcFlag},1 ${endX},${endY} Z`}
+                        fill={skill.color}
                         opacity="0.8"
                       />
                       <circle cx="120" cy="120" r="40" fill="white" />
                     </g>
                   );
                 })}
-                
+
                 {/* 技能圆环中心文字 */}
                 <text x="120" y="110" fontSize="18" fontWeight="bold" textAnchor="middle" fill="#334155">技能水平</text>
                 <text x="120" y="135" fontSize="24" fontWeight="bold" textAnchor="middle" fill="#1e40af">中级</text>
@@ -423,11 +428,10 @@ export default function AnalyticsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                        week.efficiency > 80 ? 'bg-green-100 text-green-800' : 
-                        week.efficiency > 60 ? 'bg-yellow-100 text-yellow-800' : 
-                        'bg-red-100 text-red-800'
-                      }`}>
+                      <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${week.efficiency > 80 ? 'bg-green-100 text-green-800' :
+                        week.efficiency > 60 ? 'bg-yellow-100 text-yellow-800' :
+                          'bg-red-100 text-red-800'
+                        }`}>
                         {week.efficiency > 80 ? '优秀' : week.efficiency > 60 ? '良好' : '需提高'}
                       </span>
                     </td>

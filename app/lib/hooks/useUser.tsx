@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 工具函数/库 · useUser.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import type React from "react"
@@ -243,7 +249,7 @@ export function useUser() {
         }
 
         setUser(userData)
-      } catch (err) {
+      } catch (_err) {
         setError("获取用户信息失败")
       } finally {
         setLoading(false)

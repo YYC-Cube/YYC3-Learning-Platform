@@ -1,11 +1,8 @@
 /**
- * @file AI小部件客户端组件
- * @description 封装可插拔式拖拽移动AI系统的客户端组件
- * @module AISmartWidget
+ * @fileoverview UI组件 · AISmartWidget.tsx
  * @author YYC³ <admin@0379.email>
  * @version 1.0.0
- * @created 2024-10-15
- * @updated 2024-10-15
+ * @license MIT
  */
 'use client';
 

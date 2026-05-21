@@ -99,6 +99,7 @@ const logger = {
     console.warn(`[PerformanceMonitor] ${message}`);
   },
   info: (message: string) => {
+    // eslint-disable-next-line no-console
     console.info(`[PerformanceMonitor] ${message}`);
   },
 };

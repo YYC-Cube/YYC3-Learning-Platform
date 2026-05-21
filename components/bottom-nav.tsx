@@ -1,10 +1,10 @@
 /**
  * @fileoverview 移动端底部导航组件
  * @description 提供移动端应用的底部导航菜单，支持页面切换和当前页面高亮显示
- * @author YYC³ Team
- * @version 1.0.0
+ * @author YYC³ <admin@0379.email>
+ * @version 2.0.0
  * @created 2025-01-30
- * @modified 2025-01-30
+ * @modified 2025-12-27
  * @copyright Copyright (c) 2025 YYC³
  * @license MIT
  */
@@ -52,23 +52,11 @@ function BottomNav() {
 
   return (
     <nav
-      className="bottom-nav fixed bottom-0 left-0 right-0 z-[9999] bg-white border-t border-gray-200 shadow-lg block md:hidden"
+      className="bottom-nav fixed bottom-0 left-0 right-0 bg-card border-t border-border shadow-lg block md:hidden"
+      style={{ zIndex: "var(--z-nav)" }}
       role="navigation"
       aria-label="底部导航"
       data-bottom-nav="true"
-      style={{
-        display: "flex" as any,
-        visibility: "visible" as any,
-        opacity: "1" as any,
-        position: "fixed" as any,
-        bottom: "0" as any,
-        left: "0" as any,
-        right: "0" as any,
-        zIndex: "9999" as any,
-        backgroundColor: "white" as any,
-        borderTop: "1px solid #e5e7eb" as any,
-        boxShadow: "0 -4px 6px -1px rgba(0, 0, 0, 0.1)" as any,
-      }}
     >
       <div className="flex justify-around items-center h-16 px-2 w-full">
         {navItems.map((item) => {
@@ -79,8 +67,10 @@ function BottomNav() {
             <Link
               key={item.name}
               href={item.href}
-              className={`flex flex-col items-center justify-center flex-1 h-full py-2 px-1 rounded-lg transition-all duration-200 touch-target md:hidden ${
-                isActive ? "text-blue-600 bg-blue-100" : "text-gray-500 hover:text-blue-500 hover:bg-gray-100"
+              className={`flex flex-col items-center justify-center flex-1 h-full py-2 px-1 rounded-lg transition-all duration-[var(--transition-fast)] touch-target md:hidden ${
+                isActive 
+                  ? "text-primary bg-primary/10" 
+                  : "text-muted-foreground hover:text-primary hover:bg-muted"
               }`}
               aria-label={isActive ? `${item.name} - 当前页面` : item.description}
               aria-current={isActive ? "page" : undefined}

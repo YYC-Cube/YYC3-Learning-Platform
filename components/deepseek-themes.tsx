@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · deepseek-themes.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 export const deepseekThemes = {
   // 原版蓝紫色
   classic: {

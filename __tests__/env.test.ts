@@ -7,8 +7,8 @@
  * @copyright Copyright (c) 2025 YYC³
  * @license MIT
  */
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { validateEnvConfig, getEnvInfo, checkEnvironment } from '../lib/env';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { checkEnvironment, getEnvInfo, validateEnvConfig } from '../lib/env';
 
 describe('环境变量验证模块', () => {
   const originalEnv = process.env;
@@ -24,13 +24,13 @@ describe('环境变量验证模块', () => {
   describe('validateEnvConfig', () => {
     it('应该在开发环境中成功验证', () => {
       process.env = { ...originalEnv, NODE_ENV: 'development', JWT_SECRET: 'test-secret-key-for-development-purposes-only' };
-      
+
       expect(() => validateEnvConfig()).not.toThrow();
     });
 
     it('应该在测试环境中成功验证', () => {
       process.env = { ...originalEnv, NODE_ENV: 'test', JWT_SECRET: 'test-secret-key-for-testing-purposes-only' };
-      
+
       expect(() => validateEnvConfig()).not.toThrow();
     });
 
@@ -42,13 +42,13 @@ describe('环境变量验证模块', () => {
 
     it('应该在生产环境中验证数据库密码', () => {
       process.env = { ...originalEnv, NODE_ENV: 'production', JWT_SECRET: 'a'.repeat(32), DB_PASS: 'your_secure_password_here' };
-      
-      expect(() => validateEnvConfig()).toThrow('生产环境中必须设置安全的数据库密码');
+
+      expect(() => validateEnvConfig()).toThrow(/生产环境.*DB_PASS/i);
     });
 
     it('应该在生产环境中使用安全的配置', () => {
       process.env = { ...originalEnv, NODE_ENV: 'production', JWT_SECRET: 'a'.repeat(32), DB_PASS: 'secure-production-password-12345' };
-      
+
       expect(() => validateEnvConfig()).not.toThrow();
     });
   });
@@ -56,9 +56,9 @@ describe('环境变量验证模块', () => {
   describe('getEnvInfo', () => {
     it('应该返回环境变量信息', () => {
       process.env = { ...originalEnv, NODE_ENV: 'development', JWT_SECRET: 'test-secret-key' };
-      
+
       const info = getEnvInfo();
-      
+
       expect(info).toHaveProperty('NODE_ENV');
       expect(info).toHaveProperty('PORT');
       expect(info).toHaveProperty('DB_HOST');
@@ -70,9 +70,9 @@ describe('环境变量验证模块', () => {
 
     it('不应该包含敏感信息', () => {
       process.env = { ...originalEnv, JWT_SECRET: 'secret-key', DB_PASS: 'db-password' };
-      
+
       const info = getEnvInfo();
-      
+
       expect(info).not.toHaveProperty('JWT_SECRET');
       expect(info).not.toHaveProperty('DB_PASS');
       expect(info).not.toHaveProperty('OPENAI_API_KEY');
@@ -81,9 +81,9 @@ describe('环境变量验证模块', () => {
 
     it('应该正确显示可选服务的状态', () => {
       process.env = { ...originalEnv, REDIS_HOST: 'localhost', REDIS_PORT: '6379', SENTRY_DSN: 'https://sentry.io/dsn', OPENAI_API_KEY: 'sk-test' };
-      
+
       const info = getEnvInfo();
-      
+
       expect(info.hasRedis).toBe(true);
       expect(info.hasSentry).toBe(true);
       expect(info.hasOpenAI).toBe(true);
@@ -103,7 +103,7 @@ describe('环境变量验证模块', () => {
     });
 
     it('应该正确识别生产环境', () => {
-      process.env = { ...originalEnv, NODE_ENV: 'production' };
+      process.env = { ...originalEnv, NODE_ENV: 'production', DB_PASS: 'secure-production-password-12345', JWT_SECRET: 'a'.repeat(32) };
 
       const envCheck = checkEnvironment();
 

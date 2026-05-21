@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 工具函数/库 · validators.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 import { z } from "zod"
 
 // 用户验证schemas

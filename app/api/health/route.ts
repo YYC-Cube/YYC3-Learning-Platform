@@ -6,7 +6,7 @@
  */
 
 import { NextResponse } from 'next/server';
-import { performHealthCheck, liveness, readiness } from '@/lib/monitoring/health-check';
+import { performHealthCheck } from '@/lib/monitoring/health-check';
 import { applySecurityHeadersToNextResponse } from '@/lib/security/headers';
 
 /**

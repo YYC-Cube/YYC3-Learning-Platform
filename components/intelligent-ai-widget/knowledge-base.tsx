@@ -1,13 +1,13 @@
 /**
- * @file knowledge-base.tsx
- * @description 知识库组件，提供知识管理、检索和学习功能
+ * @fileoverview UI组件 · knowledge-base.tsx
  * @author YYC³ <admin@0379.email>
  * @version 1.0.0
+ * @license MIT
  */
 
 "use client";
 
-import { Search, Plus, BookOpen, FileText, Tag, Clock, Star, FolderOpen, ChevronRight, TrendingUp, Lightbulb } from 'lucide-react';
+import { BookOpen, Clock, FileText, FolderOpen, Plus, Search, Star, Tag, TrendingUp } from 'lucide-react';
 import * as React from 'react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -62,14 +62,14 @@ export const KnowledgeBase: React.FC<KnowledgeBaseProps> = ({
   onItemClick,
   onItemCreate,
   onItemUpdate,
-  onItemDelete
+  onItemDelete: _onItemDelete
 }) => {
   const [items, setItems] = useState<KnowledgeItem[]>([]);
   const [categories, setCategories] = useState<KnowledgeCategory[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedTag, setSelectedTag] = useState<string>('');
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode, _setViewMode] = useState<'grid' | 'list'>('grid');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ export const KnowledgeBase: React.FC<KnowledgeBaseProps> = ({
 
   const loadKnowledgeData = useCallback(async () => {
     setLoading(true);
-    
+
     try {
       const [loadedItems, loadedCategories] = await Promise.all([
         loadKnowledgeItems(),
@@ -223,11 +223,10 @@ export const KnowledgeBase: React.FC<KnowledgeBaseProps> = ({
         <div className="flex items-center space-x-2 overflow-x-auto pb-2">
           <button
             onClick={() => handleCategorySelect('all')}
-            className={`flex items-center space-x-1 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
-              selectedCategory === 'all'
+            className={`flex items-center space-x-1 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${selectedCategory === 'all'
                 ? 'bg-indigo-600 text-white'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
+              }`}
           >
             <BookOpen className="w-3 h-3" />
             <span>全部</span>
@@ -236,17 +235,15 @@ export const KnowledgeBase: React.FC<KnowledgeBaseProps> = ({
             <button
               key={category.id}
               onClick={() => handleCategorySelect(category.id)}
-              className={`flex items-center space-x-1 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
-                selectedCategory === category.id
+              className={`flex items-center space-x-1 px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${selectedCategory === category.id
                   ? 'bg-indigo-600 text-white'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+                }`}
             >
               <span>{category.icon}</span>
               <span>{category.name}</span>
-              <span className={`ml-1 px-1.5 py-0.5 rounded-full ${
-                selectedCategory === category.id ? 'bg-white/20' : 'bg-gray-300'
-              }`}>
+              <span className={`ml-1 px-1.5 py-0.5 rounded-full ${selectedCategory === category.id ? 'bg-white/20' : 'bg-gray-300'
+                }`}>
                 {category.count}
               </span>
             </button>
@@ -261,11 +258,10 @@ export const KnowledgeBase: React.FC<KnowledgeBaseProps> = ({
               <button
                 key={tag}
                 onClick={() => handleTagSelect(tag)}
-                className={`px-2 py-1 rounded-full text-xs whitespace-nowrap transition-colors ${
-                  selectedTag === tag
+                className={`px-2 py-1 rounded-full text-xs whitespace-nowrap transition-colors ${selectedTag === tag
                     ? 'bg-indigo-600 text-white'
                     : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                }`}
+                  }`}
               >
                 {tag}
               </button>
@@ -369,7 +365,7 @@ export const KnowledgeBase: React.FC<KnowledgeBaseProps> = ({
 
 KnowledgeBase.displayName = 'KnowledgeBase';
 
-const KnowledgeCard: React.FC<KnowledgeCardProps> = React.memo(({ item, onClick, onFavorite }) => {
+const KnowledgeCard: React.FC<KnowledgeCardProps> = React.memo(({ item, onClick: _onClick, onFavorite }) => {
   const typeIcons = {
     article: '📄',
     document: '📋',
@@ -394,6 +390,8 @@ const KnowledgeCard: React.FC<KnowledgeCardProps> = React.memo(({ item, onClick,
           </span>
         </div>
         <button
+          type="button"
+          title={item.isFavorite ? '取消收藏' : '收藏'}
           onClick={(e) => {
             e.stopPropagation();
             onFavorite(item.id, !item.isFavorite);

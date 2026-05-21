@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 工具函数/库 · storage.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 import { logger } from './logger'
 
 export const storage = {

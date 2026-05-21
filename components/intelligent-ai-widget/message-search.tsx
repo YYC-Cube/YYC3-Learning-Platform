@@ -88,7 +88,7 @@ export const MessageSearch: React.FC<MessageSearchProps> = ({
     
     try {
       const timeRange = TIME_RANGES[selectedTimeRange].value;
-      const filter: MessageFilter = {
+      const _filter: MessageFilter = {
         keyword: keyword.trim(),
         role: selectedRole !== 'all' ? selectedRole as 'user' | 'assistant' | 'system' : undefined,
         startDate: timeRange.startDate,

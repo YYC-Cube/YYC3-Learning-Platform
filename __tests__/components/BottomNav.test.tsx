@@ -61,7 +61,7 @@ describe("BottomNav", () => {
 
     const coursesLink = screen.getByRole("link", { name: /课程/ })
     expect(coursesLink).toHaveAttribute("aria-current", "page")
-    expect(coursesLink).toHaveClass("text-blue-600")
+    expect(coursesLink).toHaveClass("text-primary")
   })
 
   it("点击导航项时正确跳转", () => {

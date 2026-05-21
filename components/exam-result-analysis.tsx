@@ -1,10 +1,16 @@
+/**
+ * @fileoverview UI组件 · exam-result-analysis.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button"
-import { Trophy, Target, Clock, BookOpen, Download, Share2, RefreshCw } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Progress } from "@/components/ui/progress"
+import { BookOpen, Clock, Download, RefreshCw, Share2, Target, Trophy } from "lucide-react"
 
 interface ExamResultAnalysisProps {
   results: any
@@ -61,6 +67,7 @@ export function ExamResultAnalysis({
             </div>
           </div>
           <CardTitle className="text-3xl font-bold mb-2">
+            {examTitle && <span className="text-lg font-normal text-gray-500 block mb-1">{examTitle}</span>}
             <span className={performance.color}>{results.score}</span>
             <span className="text-gray-500 text-xl ml-2">分</span>
           </CardTitle>

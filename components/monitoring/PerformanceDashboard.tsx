@@ -73,7 +73,7 @@ export function PerformanceDashboard({ refreshInterval = 5000 }: PerformanceDash
     return Math.min(percentage, 100);
   };
 
-  const getProgressColor = (metric: PerformanceMetric) => {
+  const _getProgressColor = (metric: PerformanceMetric) => {
     const percentage = getProgressValue(metric);
     if (percentage <= 50) return 'bg-green-500';
     if (percentage <= 80) return 'bg-yellow-500';

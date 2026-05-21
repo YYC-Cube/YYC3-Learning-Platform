@@ -10,16 +10,22 @@
  */
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { 
-  BookOpen, Brain, Users, Trophy, Clock, Target, Play, CheckCircle, Star 
-} from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { ResponsiveLayout } from "@/components/responsive-layout";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  BookOpen, Brain,
+  CheckCircle,
+  Clock,
+  Play,
+  Star,
+  Target,
+  Trophy,
+  Users
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 // 类型定义（增强类型安全）
 type User = {
@@ -205,7 +211,7 @@ export default function Dashboard() {
                             <Badge
                               variant={
                                 course.difficulty === "初级" ? "default" :
-                                course.difficulty === "中级" ? "secondary" : "destructive"
+                                  course.difficulty === "中级" ? "secondary" : "destructive"
                               }
                             >
                               {course.difficulty}
@@ -219,7 +225,7 @@ export default function Dashboard() {
                             </div>
                           </div>
                           <div className="flex items-center justify-between">
-                            <div 
+                            <div
                               className="w-full bg-gray-200 rounded-full h-2 mr-4"
                               role="progressbar"
                               aria-valuenow={course.progress}
@@ -235,9 +241,9 @@ export default function Dashboard() {
                             <span className="text-sm font-medium text-blue-600 mr-4">
                               {course.progress}%
                             </span>
-                            <Button 
-                              size="sm" 
-                              className="bg-blue-600 hover:bg-blue-700 text-white" 
+                            <Button
+                              size="sm"
+                              className="bg-blue-600 hover:bg-blue-700 text-white"
                               asChild
                             >
                               <Link href={`/courses/${course.id}`} className="inline-flex items-center justify-center">
@@ -295,8 +301,8 @@ export default function Dashboard() {
                   <CardTitle id="quick-actions-heading">快速操作</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3 flex-1 flex flex-col justify-center">
-                  <Button 
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white" 
+                  <Button
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                     asChild
                   >
                     <Link href="/practice" className="inline-flex items-center justify-center">
@@ -304,9 +310,9 @@ export default function Dashboard() {
                       开始练习
                     </Link>
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-2 hover:bg-gray-50" 
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 hover:bg-gray-50"
                     asChild
                   >
                     <Link href="/courses" className="inline-flex items-center justify-center">
@@ -314,9 +320,9 @@ export default function Dashboard() {
                       浏览课程
                     </Link>
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-2 hover:bg-gray-50" 
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 hover:bg-gray-50"
                     asChild
                   >
                     <Link href="/team" className="inline-flex items-center justify-center">

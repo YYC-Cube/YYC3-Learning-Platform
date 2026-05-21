@@ -1,17 +1,23 @@
+/**
+ * @fileoverview UI组件 · professional-exam.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
-import { useState, useEffect, useCallback, useMemo } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
 import { Progress } from "@/components/ui/progress"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Clock, ArrowLeft, ArrowRight, Trophy, FileText, AlertCircle } from "lucide-react"
 import type { ExamQuestion } from "@/data/exam-questions"
 import { generateExamPaper } from "@/data/exam-questions"
+import { AlertCircle, ArrowLeft, ArrowRight, Clock, FileText, Trophy } from "lucide-react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 
 interface ProfessionalExamProps {
   examType: "practice" | "formal" | "mock"
@@ -47,23 +53,6 @@ export function ProfessionalExam({ examType, timeLimit = 120, onComplete }: Prof
     })
     setExamQuestions(questions)
   }, [examType])
-
-  // 计时器
-  useEffect(() => {
-    if (!examStarted || examCompleted) return
-
-    const timer = setInterval(() => {
-      setTimeRemaining((prev) => {
-        if (prev <= 1) {
-          handleSubmitExam()
-          return 0
-        }
-        return prev - 1
-      })
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [examStarted, examCompleted, handleSubmitExam])
 
   const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600)
@@ -104,7 +93,7 @@ export function ProfessionalExam({ examType, timeLimit = 120, onComplete }: Prof
             ? userAnswer === question.correctAnswers[0]
             : Array.isArray(userAnswer) &&
               userAnswer.length === question.correctAnswers.length &&
-              userAnswer.every((ans: number) => question.correctAnswers.includes(ans))
+              userAnswer.every((ans: unknown) => (question.correctAnswers as number[]).includes(ans as number))
 
         if (isCorrect) {
           totalCorrect++
@@ -133,6 +122,23 @@ export function ProfessionalExam({ examType, timeLimit = 120, onComplete }: Prof
     setShowResults(true)
     onComplete?.(examResults)
   }, [timeLimit, timeRemaining, examQuestions, answers, onComplete])
+
+  // 计时器
+  useEffect(() => {
+    if (!examStarted || examCompleted) return
+
+    const timer = setInterval(() => {
+      setTimeRemaining((prev) => {
+        if (prev <= 1) {
+          handleSubmitExam()
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [examStarted, examCompleted, handleSubmitExam])
 
   const currentQuestion = useMemo(() => examQuestions[currentQuestionIndex], [examQuestions, currentQuestionIndex])
 

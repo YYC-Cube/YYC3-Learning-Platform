@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 页面组件 · page.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { useState } from "react"
@@ -18,12 +24,12 @@ import {
   Share2,
   Download,
   Lock,
-  CheckCircle,
   Calendar,
   Zap,
   Crown,
   Medal,
   Gift,
+  CheckCircle,
 } from "lucide-react"
 import Link from "next/link"
 
@@ -308,7 +314,7 @@ export default function AchievementsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredAchievements.map((achievement) => {
             const Icon = achievement.icon
-            const isCompleted = achievement.progress >= achievement.maxProgress
+            const _isCompleted = achievement.progress >= achievement.maxProgress
 
             return (
               <Card

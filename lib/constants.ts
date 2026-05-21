@@ -1,3 +1,11 @@
+/**
+ * @fileoverview 应用常量定义
+ * @description 集中管理应用级别的常量配置，包括API路由、存储键等
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
+
 // 应用常量定义
 
 export const APP_CONFIG = {

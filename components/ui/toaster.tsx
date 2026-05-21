@@ -1,4 +1,16 @@
+/**
+ * @fileoverview UI组件 · toaster.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 'use client'
+
+/**
+ * @fileoverview Toast容器组件
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT */
 
 import { useToast } from '@/hooks/use-toast'
 import {

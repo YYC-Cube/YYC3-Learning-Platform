@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · swipe-container.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { useState, useRef, type ReactNode, type TouchEvent } from "react"

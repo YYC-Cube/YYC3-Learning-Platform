@@ -1,6 +1,8 @@
 /**
- * YYC³ 全局设计系统配置
- * @description 统一的UI设计规范和样式变量
+ * @fileoverview 工具函数/库 · design-system.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
  */
 
 export const DesignSystem = {

@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Context Provider · AIAssistantProvider.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client";
 
 import LazyAIWidgetWrapper from '@/components/intelligent-ai-widget/lazy-ai-widget';

@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 页面组件 · page.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Shield, Eye, Lock, Users, Mail, Phone } from "lucide-react"

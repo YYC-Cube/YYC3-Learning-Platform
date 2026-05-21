@@ -1,14 +1,11 @@
 /**
  * @fileoverview 用户认证模块
  * @description 处理用户登录、注册、权限验证等核心功能
- * @author YYC³
+ * @author YYC³ <admin@0379.email>
  * @version 1.0.0
- * @created 2025-03-17
- * @modified 2025-03-17
- * @copyright Copyright (c) 2025 YYC³
  * @license MIT
  */
-import type { DbUser } from "../types/user"
+import type { DbUser as _DbUser } from "../types/user"
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
 import { env } from "./env"

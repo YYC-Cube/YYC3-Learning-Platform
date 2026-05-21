@@ -1,8 +1,14 @@
+/**
+ * @fileoverview 工具函数/库 · useCourses.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
-import type { Course, ApiResponse, SearchFilters, PaginationInfo } from "@/app/types"
+import type { ApiResponse, Course, PaginationInfo, SearchFilters } from "@/app/types"
 import { courseData } from "@/data/course-data"
+import { useCallback, useEffect, useState } from "react"
 
 interface UseCoursesOptions {
   initialFilters?: SearchFilters
@@ -245,8 +251,8 @@ export function useCourses(options: UseCoursesOptions = {}) {
   const getRecommendedCourses = useCallback(
     (limit = 5): Course[] => {
       return courses
-        .filter((course) => course.rating >= 4.5)
-        .sort((a, b) => b.rating - a.rating)
+        .filter((course) => (course.rating ?? 0) >= 4.5)
+        .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
         .slice(0, limit)
     },
     [courses],
@@ -297,7 +303,7 @@ export function useCourses(options: UseCoursesOptions = {}) {
         ]
 
         setCourses(mockCourses)
-      } catch (err) {
+      } catch (_err) {
         setError("获取课程数据失败")
       } finally {
         setLoading(false)

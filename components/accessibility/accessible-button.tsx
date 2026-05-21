@@ -1,11 +1,8 @@
 /**
- * @file Accessible Button Component
- * @description An accessible button component with enhanced features like loading states and descriptions
- * @module accessibility/accessible-button
- * @author YYC
+ * @fileoverview UI组件 · accessible-button.tsx
+ * @author YYC³ <admin@0379.email>
  * @version 1.0.0
- * @created 2024-10-15
- * @updated 2024-10-15
+ * @license MIT
  */
 
 "use client"

@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Context Provider · AIWidgetContext.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
@@ -14,7 +20,7 @@ const AIWidgetContext = createContext<AIWidgetContextType | undefined>(undefined
 
 export function AIWidgetProvider({ children }: { children: ReactNode }) {
   const [showWidget, setShowWidget] = useState(true);
-  const [isMounted, setIsMounted] = useState(false);
+  const [_isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);

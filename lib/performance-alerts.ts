@@ -228,13 +228,13 @@ class PerformanceAlertManager {
           this.sendConsoleNotification(alert)
           break
         case 'email':
-          this.sendEmailNotification(alert, channel.config)
+          this.sendEmailNotification(alert, channel.config ?? {})
           break
         case 'slack':
-          this.sendSlackNotification(alert, channel.config)
+          this.sendSlackNotification(alert, channel.config ?? {})
           break
         case 'webhook':
-          this.sendWebhookNotification(alert, channel.config)
+          this.sendWebhookNotification(alert, channel.config ?? {})
           break
       }
     })
@@ -242,7 +242,7 @@ class PerformanceAlertManager {
 
   private sendConsoleNotification(alert: Alert) {
     const emoji = alert.type === 'critical' ? '🚨' : alert.type === 'warning' ? '⚠️' : 'ℹ️'
-    console.log(`${emoji} [${alert.type.toUpperCase()}] ${alert.message}`)
+    console.warn(`${emoji} [${alert.type.toUpperCase()}] ${alert.message}`)
   }
 
   private async sendEmailNotification(alert: Alert, config: Record<string, any>) {
@@ -402,6 +402,7 @@ class PerformanceAlertManager {
 
   clearAlerts() {
     this.alerts = []
+    this.lastAlertTimes.clear()
   }
 
   clearOldAlerts(maxAge: number) {

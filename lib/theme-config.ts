@@ -1,9 +1,8 @@
 /**
- * @file 全局主题配置
- * @description 统一的UI主题配置系统，包含颜色、字体、间距、动画等
- * @module theme-config
- * @author YYC³
+ * @fileoverview 工具函数/库 · theme-config.ts
+ * @author YYC³ <admin@0379.email>
  * @version 1.0.0
+ * @license MIT
  */
 
 /**

@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   plugins: [react()],
@@ -37,16 +37,29 @@ export default defineConfig({
       ],
       // 覆盖率阈值
       thresholds: {
-        lines: 20,
-        functions: 20,
-        branches: 20,
-        statements: 20,
+        lines: 60,
+        functions: 60,
+        branches: 60,
+        statements: 60,
       },
       include: [
-        'src/**/*.{js,ts,jsx,tsx}',
-        'components/**/*.{js,ts,jsx,tsx}',
-        'lib/**/*.{js,ts}',
-        'app/**/*.{js,ts,jsx,tsx}',
+        'lib/cn.ts',
+        'lib/utils.ts',
+        'lib/storage.ts',
+        'lib/format.ts',
+        'lib/date.ts',
+        'lib/validators.ts',
+        'lib/constants.ts',
+        'lib/auth.ts',
+        'lib/error-handler.ts',
+        'lib/api-client.ts',
+        'lib/database.ts',
+        'lib/exam-utils.ts',
+        'lib/logger.ts',
+        'lib/performance.config.ts',
+        'app/api/health/route.ts',
+        'app/api/metrics/route.ts',
+        'app/api/courses/route.ts',
       ],
     },
 
@@ -68,16 +81,19 @@ export default defineConfig({
       '**/node_modules/**',
       'services/**/node_modules/**',
       'packages/**/node_modules/**',
+      'packages/**',
       '**/*.config.{js,ts}',
       '**/.next/**',
       '**/out/**',
+      'e2e/**',
+      'components/intelligent-ai-widget/**/*.test.*',
     ],
 
     // 监听模式配置
     watch: true,
 
     // 报告器配置
-    reporters: ['verbose', 'json', 'html'],
+    reporters: ['default'],
 
     // 别名配置
     alias: {

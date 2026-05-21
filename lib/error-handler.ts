@@ -1,12 +1,7 @@
 /**
- * @file 错误处理模块
- * @description 提供自定义错误类和API错误处理功能
- * @module error-handler
- * @author YYC³
+ * @fileoverview 工具函数/库 · error-handler.ts
+ * @author YYC³ <admin@0379.email>
  * @version 1.0.0
- * @created 2025-01-30
- * @updated 2025-01-30
- * @copyright Copyright (c) 2025 YYC³
  * @license MIT
  */
 

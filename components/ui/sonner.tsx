@@ -1,4 +1,16 @@
+/**
+ * @fileoverview UI组件 · sonner.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 'use client'
+
+/**
+ * @fileoverview Toast通知组件(sonner)
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT */
 
 import { useTheme } from 'next-themes'
 import { Toaster as Sonner } from 'sonner'

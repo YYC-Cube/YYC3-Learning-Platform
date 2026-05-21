@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · ai-logo-button.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client";
 
 import Image from "next/image";

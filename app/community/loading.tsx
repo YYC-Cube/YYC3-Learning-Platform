@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 加载状态组件 · loading.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 export default function CommunityLoading() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 pb-20">

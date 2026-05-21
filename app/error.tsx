@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 源代码文件 · error.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { useEffect } from "react"

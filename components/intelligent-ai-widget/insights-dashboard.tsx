@@ -1,15 +1,15 @@
 /**
- * @file insights-dashboard.tsx
- * @description 洞察仪表板组件，提供数据分析和可视化功能
+ * @fileoverview UI组件 · insights-dashboard.tsx
  * @author YYC³ <admin@0379.email>
  * @version 1.0.0
+ * @license MIT
  */
 
 "use client";
 
-import { TrendingUp, TrendingDown, Activity, Clock, MessageSquare, Zap, BarChart3, PieChart, Calendar } from 'lucide-react';
+import { Activity, BarChart3, PieChart, TrendingDown, TrendingUp, Zap } from 'lucide-react';
 import * as React from 'react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export interface InsightMetric {
   id: string;
@@ -85,7 +85,7 @@ export const InsightsDashboard: React.FC<InsightsDashboardProps> = ({
 
   const loadInsightData = useCallback(async (selectedPeriod: 'today' | 'week' | 'month' | 'year') => {
     setLoading(true);
-    
+
     try {
       const data = await generateInsightData(selectedPeriod);
       setInsightData(data);
@@ -228,7 +228,7 @@ const MetricCard: React.FC<MetricCardProps> = React.memo(({ metric }) => {
           <span>{metric.trend}</span>
         </div>
       </div>
-      
+
       <div className="text-2xl font-bold text-indigo-600 mb-1">{metric.value}</div>
       <div className="text-sm text-gray-600">{metric.title}</div>
     </div>
@@ -250,11 +250,11 @@ const ChartCard: React.FC<ChartCardProps> = React.memo(({ chart, height = 200 })
           <svg className="w-full h-full" viewBox={`0 0 ${chart.data.length * 40} ${height}`} preserveAspectRatio="none">
             <defs>
               <linearGradient id={`gradient-${chart.id}`} x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#6366f1" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+                <stop offset="0%" stopColor="hsl(var(--secondary))" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="hsl(var(--secondary))" stopOpacity="0" />
               </linearGradient>
             </defs>
-            
+
             <path
               d={chart.data.map((point, index) => {
                 const x = index * 40 + 20;
@@ -262,10 +262,10 @@ const ChartCard: React.FC<ChartCardProps> = React.memo(({ chart, height = 200 })
                 return `${index === 0 ? 'M' : 'L'} ${x} ${y}`;
               }).join(' ')}
               fill={`url(#gradient-${chart.id})`}
-              stroke="#6366f1"
+              stroke="hsl(var(--secondary))"
               strokeWidth="2"
             />
-            
+
             {chart.data.map((point, index) => {
               const x = index * 40 + 20;
               const y = height - ((point.value - minValue) / range) * (height - 40) - 20;
@@ -275,7 +275,7 @@ const ChartCard: React.FC<ChartCardProps> = React.memo(({ chart, height = 200 })
                   cx={x}
                   cy={y}
                   r="4"
-                  fill="#6366f1"
+                  fill="hsl(var(--secondary))"
                 />
               );
             })}
@@ -288,7 +288,7 @@ const ChartCard: React.FC<ChartCardProps> = React.memo(({ chart, height = 200 })
               const barHeight = ((point.value - minValue) / range) * (height - 40);
               const x = index * 50 + 10;
               const y = height - barHeight - 20;
-              
+
               return (
                 <g key={index}>
                   <rect
@@ -296,7 +296,7 @@ const ChartCard: React.FC<ChartCardProps> = React.memo(({ chart, height = 200 })
                     y={y}
                     width="30"
                     height={barHeight}
-                    fill="#6366f1"
+                    fill="hsl(var(--secondary))"
                     rx="4"
                   />
                   <text
@@ -331,7 +331,7 @@ const ChartCard: React.FC<ChartCardProps> = React.memo(({ chart, height = 200 })
                   <div key={index} className="flex items-center justify-center space-x-2 text-xs">
                     <div
                       className="w-3 h-3 rounded"
-                      style={{ backgroundColor: index % 2 === 0 ? '#6366f1' : '#a855f7' }}
+                      style={{ backgroundColor: index % 2 === 0 ? 'hsl(var(--secondary))' : 'hsl(var(--accent))' }}
                     />
                     <span>{point.label}: {point.value}</span>
                   </div>
@@ -386,11 +386,10 @@ RecommendationCard.displayName = 'RecommendationCard';
 const PeriodButton: React.FC<{ label: string; active: boolean; onClick: () => void }> = React.memo(({ label, active, onClick }) => (
   <button
     onClick={onClick}
-    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
-      active
-        ? 'bg-indigo-600 text-white'
-        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-    }`}
+    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${active
+      ? 'bg-indigo-600 text-white'
+      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+      }`}
   >
     {label}
   </button>

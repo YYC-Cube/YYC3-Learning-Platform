@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 加载状态组件 · loading.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Loader2 } from "lucide-react"

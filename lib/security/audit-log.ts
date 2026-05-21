@@ -1,11 +1,7 @@
 /**
- * Security audit logging module
- * @description Provides security event logging and monitoring functionality
- * @author YYC³
- * @version 1.1.0
- * @created 2026-02-06
- * @updated 2026-02-13
- * @copyright Copyright (c) 2026 YYC³
+ * @fileoverview 工具函数/库 · audit-log.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
  * @license MIT
  */
 

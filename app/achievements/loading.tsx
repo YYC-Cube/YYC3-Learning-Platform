@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 加载状态组件 · loading.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 export default function AchievementsLoading() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-red-50 pb-20">

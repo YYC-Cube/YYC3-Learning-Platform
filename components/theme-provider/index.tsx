@@ -1,18 +1,23 @@
+/**
+ * @fileoverview UI组件 · index.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import * as React from "react"
 import { ThemeProvider as NextThemesProvider } from "next-themes"
 import type { ThemeProviderProps } from "next-themes"
+import { useTheme as useNextTheme } from "next-themes"
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>
 }
 
-// 主题切换Hook
 export function useTheme() {
   const [mounted, setMounted] = React.useState(false)
-  const themeContext = React.useContext(require("next-themes").ThemeContext)
-  const { theme, setTheme, resolvedTheme, systemTheme } = themeContext as any || {}
+  const { theme, setTheme, resolvedTheme, systemTheme } = useNextTheme()
 
   React.useEffect(() => {
     setMounted(true)
@@ -141,7 +146,7 @@ export const themeConfig = {
 
 // CSS变量注入组件
 export function ThemeVariables() {
-  const { theme, resolvedTheme } = useTheme()
+  const { resolvedTheme } = useTheme()
   const currentTheme = brandTheme[resolvedTheme as keyof typeof brandTheme] || brandTheme.light
 
   React.useEffect(() => {
@@ -149,15 +154,18 @@ export function ThemeVariables() {
 
     // 注入CSS变量
     Object.entries(currentTheme).forEach(([key, value]) => {
-      if (key !== "gradient") {
+      if (key !== "gradient" && typeof value === "string") {
         root.style.setProperty(`--theme-${key}`, value)
       }
     })
 
     // 注入渐变变量
-    Object.entries(currentTheme.gradient).forEach(([key, value]) => {
-      root.style.setProperty(`--gradient-${key}`, value)
-    })
+    const gradient = currentTheme.gradient
+    if (typeof gradient === "object" && gradient !== null) {
+      Object.entries(gradient).forEach(([key, value]) => {
+        root.style.setProperty(`--gradient-${key}`, value)
+      })
+    }
   }, [currentTheme])
 
   return null

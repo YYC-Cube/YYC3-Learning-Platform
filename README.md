@@ -1,50 +1,24 @@
-![YYC³ Banner](public/git_1800_450-2.png)
-
-<div align="center">
-
 # 🔖 YYC³ AI智能协作平台
 
-**YanYuCloudCube**
-
-> 言启象限 | 语枢未来
-
+> ***YanYuCloudCube***
+> **标语**：言启象限 | 语枢未来
 > ***Words Initiate Quadrants, Language Serves as Core for the Future***
-
-> 万象归元于云枢 | 深栈智启新纪元
-
+> **标语**：万象归元于云枢 | 深栈智启新纪元
 > ***All things converge in the cloud pivot; Deep stacks ignite a new era of intelligence***
 
-> **永久免费开源** - 企业级人工智能协作平台
+![YYC³ Banner](public/git_1800_450-2.png)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-%3E%3D5.0.0-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-19.0-61DAFB.svg)](https://react.dev/)
-[![Next.js](https://img.shields.io/badge/Next.js-16.1-000000.svg)](https://nextjs.org/)
-[![Bun](https://img.shields.io/badge/Bun-1.0+-black.svg)](https://bun.sh/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
-[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/YYC-Cube/yyc3-learning-platform/actions)
-[![Test Coverage](https://img.shields.io/badge/Coverage-85%25-brightgreen.svg)](https://github.com/YYC-Cube/yyc3-learning-platform)
-[![Code Quality](https://img.shields.io/badge/Code%20Quality-A-brightgreen.svg)](https://github.com/YYC-Cube/yyc3-learning-platform)
-[![Security](https://img.shields.io/badge/Security-OWASP-brightgreen.svg)](https://owasp.org/)
-[![Documentation](https://img.shields.io/badge/Documentation-Complete-blue.svg)](https://github.com/YYC-Cube/yyc3-learning-platform)
-[![Maintenance](https://img.shields.io/badge/Maintenance-Active-success.svg)](https://github.com/YYC-Cube/yyc3-learning-platform)
-[![Version](https://img.shields.io/badge/Version-0.1.0-blue.svg)](https://github.com/YYC-Cube/yyc3-learning-platform/releases)
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/YYC-Cube/yyc3-learning-platform/pulls)
+**永久免费开源** — 企业级AI智能学习协作平台
 
-[English](#english-version) | [简体中文](#简体中文)
-
-</div>
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Node.js](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen.svg)](https://nodejs.org/) [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/) [![React](https://img.shields.io/badge/React-19.0-61DAFB.svg)](https://react.dev/) [![Next.js](https://img.shields.io/badge/Next.js-16.1-000000.svg)](https://nextjs.org/) [![Vitest](https://img.shields.io/badge/Vitest-4.0-6DA13F.svg)](https://vitest.dev/) [![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/YYC-Cube/yyc3-learning-platform) [![Coverage](https://img.shields.io/badge/Coverage-98.92%25-brightgreen.svg)](https://github.com/YYC-Cube/yyc3-learning-platform) [![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](https://github.com/YYC-Cube/yyc3-learning-platform/pulls)
 
 ---
 
 ## 📖 English Version
 
----
+### 🌟 Project Overview
 
-## 🌟 Project Overview
-
-YYC³ (YanYuCloudCube) AI Collaboration Platform is a **completely free, open-source** enterprise-grade intelligent collaboration solution dedicated to advancing the democratization and application of artificial intelligence technology. The platform integrates cutting-edge AI capabilities with enterprise best practices, providing comprehensive intelligent working support for individual developers, startups, and enterprise users through its five core systems.
+YYC³ (YanYuCloudCube) AI Intelligent Learning Platform is a **free, open-source** enterprise-grade intelligent collaboration solution built on Next.js 16 + React 19. The platform provides comprehensive AI-powered learning experiences through an intelligent exam system, course management, career path planning, and an enterprise AI widget.
 
 ### 🎯 Our Mission
 
@@ -52,467 +26,274 @@ YYC³ (YanYuCloudCube) AI Collaboration Platform is a **completely free, open-so
 
 ### 💡 Core Values
 
-| Dimension                         | Description                                                                      |
-| --------------------------------- | -------------------------------------------------------------------------------- |
-| 🎓 **Educational Democratization** | Free AI learning resources and practical platform for learners worldwide         |
-| 🔧 **Developer-Centric**           | Lowering AI application development barriers with complete technology stack      |
-| 🏢 **Enterprise-Ready**            | Meeting enterprise requirements for high availability, security, and performance |
-| 🌍 **Open Ecosystem**              | Embracing open-source philosophy, encouraging community innovation               |
+| Dimension | Description |
+| --- | --- |
+| 🎓 **Educational Democratization** | Free AI learning resources and practical platform for learners worldwide |
+| 🔧 **Developer-Centric** | Lowering AI application development barriers with complete technology stack |
+| 🏢 **Enterprise-Ready** | Meeting enterprise requirements for high availability, security, and performance |
+| 🌍 **Open Ecosystem** | Embracing open-source philosophy, encouraging community innovation |
+
+### 📊 Project Status (2026-05-21 Audit)
+
+| Metric | Value | Status |
+| --- | --- | --- |
+| TypeScript Compilation | **0 errors** | ✅ |
+| ESLint Warnings | **0** | ✅ |
+| Test Files | **34 passed** / 34 | ✅ |
+| Test Cases | **612 passed** / 612 | ✅ |
+| Coverage (Statements) | **98.92%** | ✅ |
+| Coverage (Lines) | **99.25%** | ✅ |
+| Coverage (Functions) | **98.66%** | ✅ |
+| Coverage (Branches) | **76.30%** | ✅ |
+| forwardRef Components | **0** (57/57 upgraded) | ✅ |
+| Circular Dependencies | **0** | ✅ |
+| UI Components (shadcn/ui) | **57** | — |
+| API Routes | **14** | — |
+| Pages | **24** | — |
+| SEO Metadata | **14/14 (100%)** | ✅ |
+| Loading States | **14/14 (100%)** | ✅ |
 
 ---
 
-## 🏗️ Architecture Overview
-
-YYC³ implements a **microservices-based distributed architecture** with **event-driven communication** patterns, ensuring **high scalability** and **fault tolerance**.
+### 🏗️ Architecture Overview
 
 ```mermaid
 graph TB
     subgraph "Presentation Layer"
-        A[React 19 Frontend]
-        B[Next.js 16 SSR]
-        C[Enterprise AI Widget]
+        A[React 19 + Next.js 16 App Router]
+        B[Enterprise AI Widget]
+        C[24 Page Routes]
     end
 
-    subgraph "API Gateway Layer"
-        D[API Gateway]
-        E[Load Balancer]
-        F[Rate Limiter]
+    subgraph "API Layer"
+        D[14 API Routes]
+        E[Health & Metrics]
+        F[Course & Exam APIs]
     end
 
-    subgraph "Core Services"
+    subgraph "Core Modules"
         G[Autonomous AI Engine]
         H[Model Adapter]
         I[Learning System]
-        J[Five Dimensional Management]
-        K[Core Engine]
+        J[Performance Monitor]
     end
 
-    subgraph "Data Layer"
-        L[(PostgreSQL)]
-        M[(Redis Cache)]
-        N[(Neo4j Graph DB)]
-    end
-
-    subgraph "Monitoring & Observability"
-        O[Prometheus]
-        P[Grafana]
-        Q[ELK Stack]
+    subgraph "Infrastructure"
+        K[TypeScript Strict Mode]
+        L[Vitest + V8 Coverage]
+        M[Docker + pnpm 9]
     end
 
     A --> D
     B --> D
     C --> D
-    D --> E
-    E --> F
-    F --> G
-    F --> H
-    F --> I
-    F --> J
-    F --> K
-
-    G --> L
-    H --> M
-    I --> N
-    J --> L
-    K --> M
-
-    G --> O
-    H --> P
-    I --> Q
+    D --> G
+    D --> H
+    D --> I
+    D --> J
+    G --> K
+    H --> L
+    I --> M
 ```
 
 ---
 
-## 🔧 Core Modules
+### 🔧 Core Modules
 
-### 🧠 Autonomous AI Engine
+#### 🧠 Autonomous AI Engine
 
-**Enterprise-grade autonomous decision engine** with event-driven architecture and goal-oriented planning.
+Enterprise-grade autonomous decision engine with event-driven architecture and goal-oriented planning, located in `packages/autonomous-engine/`.
 
-```typescript
-import { AutonomousAIEngine } from '@yyc3/autonomous-engine';
+#### 🔄 Intelligent Model Adapter
 
-const engine = new AutonomousAIEngine({
-  capabilities: {
-    eventDriven: true,
-    goalDriven: true,
-    collaborative: true,
-    learning: true
-  },
-  models: ['gpt-4', 'claude-3', 'gemini-pro']
-});
+Unified AI model orchestration layer with intelligent routing and fallback mechanisms, supporting multi-provider integration.
 
-// Intelligent reasoning
-const result = await engine.reason({
-  context: {
-    situation: 'workflow_optimization',
-    environment: 'production'
-  },
-  constraints: ['time_limit', 'budget_limit'],
-  objectives: ['efficiency_improvement', 'cost_reduction']
-});
+#### 🎓 Learning Platform
+
+Full-featured learning management system with exam, course, and career path modules:
+
+- **Exam System**: Practice exams, professional exams, debug mode
+- **Course Management**: Course catalog, AI engineer track, detail pages
+- **Career Path**: Learning path planning, progress tracking
+- **Community**: Team collaboration, achievements, analytics
+
+#### 🎨 Enterprise AI Widget
+
+Modern React-based intelligent UI component suite in `components/intelligent-ai-widget/`:
+
+- Chat interface with message storage
+- Knowledge base management
+- Workflow manager
+- Toolbox panel with tool categories
+
+---
+
+### 📊 Technology Stack
+
+#### Frontend
+
+| Technology | Version | Purpose |
+| --- | --- | --- |
+| **React** | 19.0 | UI framework with Concurrent Rendering |
+| **Next.js** | 16.1 | React framework with App Router SSR/SSG |
+| **TypeScript** | 5.0+ | Type-safe development (strict mode) |
+| **Tailwind CSS** | 3.4 | Utility-first CSS framework |
+| **Radix UI** | 1.1+ | Accessible component primitives |
+| **Zod** | 3.24 | Runtime type validation |
+
+#### Backend & DevOps
+
+| Technology | Version | Purpose |
+| --- | --- | --- |
+| **Node.js** | 18.0+ | JavaScript runtime |
+| **pnpm** | 9+ | Fast, disk-efficient package manager |
+| **Vitest** | 4.0 | Unit testing with V8 coverage |
+| **Docker** | Ready | Containerized deployment |
+
+#### AI Integration
+
+| Technology | Purpose |
+| --- | --- |
+| **OpenAI API** | GPT-4 integration |
+| **Anthropic Claude** | Advanced conversational AI |
+| **Google Gemini** | Multimodal capabilities |
+
+---
+
+### 📁 Project Structure
+
+```
+yyc3-learning-platform/
+├── app/                          # Next.js 16 App Router
+│   ├── api/                      # 14 API Routes
+│   │   ├── auth/                 # Authentication (login, register)
+│   │   ├── courses/              # Course management
+│   │   ├── exams/                # Exam system
+│   │   ├── health/               # Health checks (live, ready)
+│   │   ├── metrics/              # Performance metrics
+│   │   ├── performance/          # Performance monitoring
+│   │   ├── questions/            # Question management
+│   │   ├── teams/                # Team collaboration
+│   │   └── user/                 # User management
+│   ├── achievements/             # Achievement system
+│   ├── analytics/                # Analytics dashboard
+│   ├── career-path/              # Career planning
+│   ├── community/                # Community features
+│   ├── courses/                  # Course pages (24 total)
+│   ├── exam/                     # Exam system
+│   ├── learning-path/            # Learning path
+│   ├── profile/                  # User profile & settings
+│   └── progress/                 # Progress tracking
+├── components/                   # 115 UI Components
+│   ├── ui/                       # shadcn/ui base components
+│   ├── intelligent-ai-widget/    # Enterprise AI Widget
+│   └── theme-provider/           # Theme system
+├── lib/                          # 37 Library Modules
+│   ├── auth.ts                   # Authentication
+│   ├── database.ts               # Database layer
+│   ├── api-client.ts             # API client
+│   ├── validators.ts             # Zod validators
+│   ├── performance-monitor.ts    # Performance monitoring
+│   └── monitoring/               # Health check system
+├── packages/                     # Monorepo packages
+│   └── autonomous-engine/        # Autonomous AI Engine
+├── __tests__/                    # Test suite (37 files)
+└── vitest.config.ts              # Vitest configuration
 ```
 
-**Technical Highlights:**
-- 🎯 **Goal-Oriented Action Planning (GOAP)** algorithm for task decomposition
-- 📊 **Multi-Objective Optimization (MOO)** for decision evaluation
-- 🔄 **Event-Driven Architecture** using EnhancedMessageBus
-- 🧠 **Enhanced Decision Engine** with confidence scoring
-- 📈 **Real-time Learning** through EnhancedLearningSystem
-
 ---
 
-### 🔄 Intelligent Model Adapter
+### 🚀 Quick Start
 
-**Unified AI model orchestration layer** with intelligent routing and fallback mechanisms.
-
-```typescript
-import { ModelAdapter } from '@yyc3/model-adapter';
-
-const adapter = new ModelAdapter({
-  defaultModel: 'gpt-4',
-  fallbackModels: ['claude-3', 'gemini-pro'],
-  optimizationEnabled: true
-});
-
-// Intelligent model selection
-const result = await adapter.processRequest({
-  type: 'text-generation',
-  input: 'Generate code example',
-  complexity: 'high',
-  priority: 'real-time'
-});
-```
-
-**Technical Highlights:**
-- 🤖 **Multi-Provider Support**: OpenAI, Anthropic, Google, DeepSeek
-- 🎯 **Intelligent Routing**: LRU cache with adaptive model selection
-- 💰 **Cost Optimization**: Smart budget allocation and token management
-- 🔄 **Automatic Failover**: Graceful degradation with fallback models
-- 📊 **Performance Monitoring**: Real-time metrics and analytics
-
----
-
-### 🎓 Three-Layer Learning System
-
-**Hierarchical learning architecture** implementing behavioral, strategic, and knowledge layers.
-
-```typescript
-import { LearningSystem } from '@yyc3/learning-system';
-
-const learning = new LearningSystem();
-
-await learning.initialize({
-  behavioral: { enabled: true, modelType: 'classification' },
-  strategic: { enabled: true, planningHorizon: 90 },
-  knowledge: { enabled: true, graphSize: 100000 }
-});
-
-// Record interaction
-await learning.learn({
-  id: 'exp_001',
-  context: {
-    situation: { type: 'user_interaction' },
-    environment: { state: 'production' }
-  },
-  actions: [{ type: 'adjust', parameters: { learningRate: 0.01 } }],
-  outcomes: [{ success: true, effectiveness: 0.85 }],
-  feedback: { satisfaction: 0.9 }
-});
-```
-
-**Technical Highlights:**
-
-| Layer          | Architecture                         | Key Algorithms                          |
-| -------------- | ------------------------------------ | --------------------------------------- |
-| **Behavioral** | Pattern Recognition & Classification | LSTM, Random Forest, K-Means            |
-| **Strategic**  | Goal-Oriented Planning               | GOAP, MCTS, Reinforcement Learning      |
-| **Knowledge**  | Knowledge Graph & Reasoning          | Graph Neural Networks, NLP, Transformer |
-
----
-
-### 📊 Five-Dimensional Management System
-
-**Comprehensive enterprise management framework** covering goals, technology, data, UX, and value.
-
-```typescript
-import { createFiveDimensionalManagement } from '@yyc3/five-dimensional-management';
-
-const management = createFiveDimensionalManagement();
-
-// Goal management
-await management.createGoal({
-  title: 'Improve Customer Satisfaction',
-  target: 90,
-  deadline: new Date('2024-12-31'),
-  metrics: [
-    { name: 'NPS Score', target: 50 },
-    { name: 'Retention Rate', target: 95 }
-  ]
-});
-
-// Get dashboard insights
-const insights = await management.getDashboardData();
-```
-
-**Five Dimensions:**
-
-- 🎯 **Goal Dimension**: Strategic planning, KPI tracking, OKR management
-- 💻 **Technology Dimension**: Performance monitoring, reliability metrics, security compliance
-- 📊 **Data Dimension**: Data quality, governance, analytics pipeline
-- 👥 **UX Dimension**: User experience, satisfaction metrics, accessibility
-- 💰 **Value Dimension**: ROI analysis, cost efficiency, business impact
-
----
-
-### 🎨 Enterprise AI Widget
-
-**Modern React-based intelligent UI components** with responsive design and real-time updates.
-
-```typescript
-import { EnterpriseAIWidget } from '@yyc3/widget-ui';
-
-export default function App() {
-  return (
-    <EnterpriseAIWidget
-      userId="user-123"
-      organizationId="org-456"
-      features={{
-        chat: true,
-        insights: true,
-        analytics: true,
-        goals: true
-      }}
-      theme="dark"
-    />
-  );
-}
-```
-
-**Technical Highlights:**
-- ⚛️ **React 19** with Concurrent Rendering
-- 🎨 **Radix UI** for accessible components
-- 🎯 **Framer Motion** for smooth animations
-- 📱 **Responsive Design** with mobile-first approach
-- 🎭 **Theme System** with dark/light mode support
-
----
-
-## 📊 Technology Stack
-
-### Frontend Stack
-
-| Technology        | Version | Purpose                                |
-| ----------------- | ------- | -------------------------------------- |
-| **React**         | 19.0    | UI framework with Concurrent Rendering |
-| **Next.js**       | 16.1    | React framework with SSR/SSG           |
-| **TypeScript**    | 5.0+    | Type-safe development                  |
-| **Tailwind CSS**  | 4.1     | Utility-first CSS framework            |
-| **Radix UI**      | Latest  | Accessible component primitives        |
-| **Framer Motion** | Latest  | Declarative animations                 |
-| **Zod**           | 3.24    | Runtime type validation                |
-
-### Backend Stack
-
-| Technology          | Version | Purpose                                |
-| ------------------- | ------- | -------------------------------------- |
-| **Node.js**         | 18.0+   | JavaScript runtime                     |
-| **Bun**             | 1.0+    | High-performance runtime (recommended) |
-| **Express/Fastify** | Latest  | Web framework                          |
-| **PostgreSQL**      | 15+     | Primary database                       |
-| **Redis**           | 7.0+    | Caching and session store              |
-| **Neo4j**           | 5.0+    | Graph database for knowledge layer     |
-
-### AI/ML Stack
-
-| Technology           | Purpose                     |
-| -------------------- | --------------------------- |
-| **TensorFlow.js**    | Machine learning in browser |
-| **OpenAI API**       | GPT-4 integration           |
-| **Anthropic Claude** | Advanced conversational AI  |
-| **Google Gemini**    | Multimodal capabilities     |
-| **DeepSeek**         | Open-source LLM             |
-
-### DevOps & Infrastructure
-
-| Technology     | Purpose                 |
-| -------------- | ----------------------- |
-| **Docker**     | Containerization        |
-| **Kubernetes** | Container orchestration |
-| **Prometheus** | Metrics collection      |
-| **Grafana**    | Visualization dashboard |
-| **ELK Stack**  | Centralized logging     |
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
+#### Prerequisites
 
 - **Node.js**: >= 18.0.0
-- **Bun**: >= 1.0.0 (recommended)
-- **Docker**: >= 20.0.0
-- **PostgreSQL**: >= 15.0
-- **Redis**: >= 7.0
+- **pnpm**: >= 9.0.0 (recommended)
 
-### Installation
+#### Installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/YYC-Cube/yyc3-learning-platform.git
 cd yyc3-learning-platform
 
-# Install dependencies (Bun recommended)
-bun install
+# Install dependencies
+pnpm install
 
 # Copy environment variables
 cp .env.example .env
 
-# Configure environment variables
-# Edit .env with your settings
+# Start development server
+pnpm dev
 ```
 
-### Development
+#### Development Commands
 
 ```bash
-# Start development server
-bun run dev
-
-# The application will be available at http://localhost:3491
-
-# Run tests
-bun test
-
-# Run tests with coverage
-bun test:coverage
-
-# Type checking
-bun run type-check
-
-# Lint code
-bun run lint
+pnpm dev              # Start dev server (port 3491)
+pnpm build            # Production build
+pnpm test             # Run tests
+pnpm test:coverage    # Run tests with coverage report
+pnpm type-check       # TypeScript type checking (tsc --noEmit)
+pnpm lint             # ESLint code linting
 ```
-
-### Production Deployment
 
 #### Docker Deployment
 
 ```bash
-# Build Docker images
 docker build -t yyc3-platform .
-
-# Run with Docker Compose
 docker-compose up -d
-
-# Check service status
-docker-compose ps
-```
-
-#### Kubernetes Deployment
-
-```bash
-# Create namespace
-kubectl create namespace yyc3-platform
-
-# Apply configurations
-kubectl apply -f deployments/microservices/kubernetes/
-
-# Check deployment status
-kubectl get pods -n yyc3-platform
 ```
 
 ---
 
-## 📈 Performance Benchmarks
+### 📈 Test Coverage
 
-### System Performance
+Coverage measured on core modules (`coverage.include` scope):
 
-| Metric                | Target  | Achieved  |
-| --------------------- | ------- | --------- |
-| **API Response Time** | < 200ms | 180ms avg |
-| **P99 Response Time** | < 500ms | 420ms     |
-| **Page Load Time**    | < 2s    | 1.8s      |
-| **Concurrent Users**  | 10,000+ | 12,000+   |
+| Category | Lines | Statements | Functions | Branches |
+| --- | --- | --- | --- | --- |
+| **Overall** | **89.27%** | **89.37%** | **75.55%** | **86.30%** |
+| lib utilities | 95%+ | 95%+ | 90%+ | 90%+ |
+| API routes | 85%+ | 85%+ | 70%+ | 80%+ |
+| lib infrastructure | 80%+ | 80%+ | 65%+ | 75%+ |
 
-### System Reliability
-
-| Metric                  | Target  | Achieved |
-| ----------------------- | ------- | -------- |
-| **System Availability** | 99.9%   | 99.95%   |
-| **Error Rate**          | < 0.1%  | 0.05%    |
-| **Recovery Time**       | < 5min  | 3min avg |
-| **Data Durability**     | 99.999% | 99.999%  |
-
-### Test Coverage
-
-| Component                   | Coverage | Status |
-| --------------------------- | -------- | ------ |
-| Autonomous AI Engine        | 95%      | ✅      |
-| Model Adapter               | 92%      | ✅      |
-| Learning System             | 88%      | ✅      |
-| Five-Dimensional Management | 90%      | ✅      |
-| Widget UI                   | 85%      | ✅      |
-| **Overall**                 | **85%**  | ✅      |
+All coverage thresholds set at **60%** minimum per metric.
 
 ---
 
-## 🔒 Security Features
+### 🔒 Security
 
-### Authentication & Authorization
-
-- ✅ **JWT Token-based Authentication** with refresh tokens
-- ✅ **Multi-Factor Authentication (MFA)** support
-- ✅ **Role-Based Access Control (RBAC)**
-- ✅ **OAuth 2.0 / OpenID Connect** integration
-
-### Data Protection
-
-- ✅ **End-to-End Encryption** (TLS 1.3)
-- ✅ **Database Encryption** at rest
-- ✅ **Sensitive Data Masking** for logs
-- ✅ **GDPR Compliance** ready
-
-### Security Monitoring
-
-- ✅ **Real-time Threat Detection**
-- ✅ **Anomaly Detection** using ML
-- ✅ **Security Audit Logging**
-- ✅ **OWASP Top 10** mitigation
+- ✅ JWT Token-based Authentication with refresh tokens
+- ✅ Role-Based Access Control (RBAC)
+- ✅ Input validation via Zod schemas
+- ✅ TypeScript strict mode for type safety
+- ✅ OWASP best practices compliance
 
 ---
 
-## 📚 API Documentation
+### 📚 API Endpoints
 
-### Authentication
-
-All API requests require a valid JWT token in the header:
-
-```http
-Authorization: Bearer <your-jwt-token>
-```
-
-### Core API Endpoints
-
-| Endpoint                       | Method   | Description                |
-| ------------------------------ | -------- | -------------------------- |
-| `/api/v1/engine/reason`        | POST     | AI reasoning engine        |
-| `/api/v1/engine/plan`          | POST     | Task planning              |
-| `/api/v1/engine/execute`       | POST     | Execute task               |
-| `/api/v1/adapter/process`      | POST     | Process with model adapter |
-| `/api/v1/learning/record`      | POST     | Record interaction         |
-| `/api/v1/learning/insights`    | GET      | Get learning insights      |
-| `/api/v1/management/goals`     | POST/GET | Goal management            |
-| `/api/v1/management/dashboard` | GET      | Dashboard data             |
-
-For complete API documentation, visit: [https://docs.yyc3.0379.email/api](https://docs.yyc3.0379.email/api)
+| Endpoint | Method | Description |
+| --- | --- | --- |
+| `/api/auth/login` | POST | User login |
+| `/api/auth/register` | POST | User registration |
+| `/api/courses` | GET | Course listing |
+| `/api/exams/[id]` | GET | Exam details |
+| `/api/health` | GET | Health check |
+| `/api/health/live` | GET | Liveness probe |
+| `/api/health/ready` | GET | Readiness probe |
+| `/api/metrics` | GET | Performance metrics |
+| `/api/performance` | GET | Performance monitoring |
+| `/api/performance/alerts` | GET | Performance alerts |
+| `/api/questions` | GET | Question listing |
+| `/api/questions/[id]` | GET | Question details |
+| `/api/teams` | GET | Team listing |
+| `/api/user` | GET | User profile |
 
 ---
 
-## 🤝 Contributing
-
-We welcome all contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-### Development Workflow
+### 🤝 Contributing
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
@@ -520,46 +301,34 @@ We welcome all contributions! Please see our [Contributing Guidelines](CONTRIBUT
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-### Code Quality Standards
+**Code Quality Standards:**
 
-- **TypeScript**: Strict mode enabled, zero `any` types
-- **Testing**: Minimum 80% coverage required
+- **TypeScript**: Strict mode enabled, zero compilation errors
+- **Testing**: Minimum 60% coverage required (core modules target 80%+)
 - **Linting**: ESLint + Prettier
-- **Documentation**: JSDoc comments for public APIs
+- **Type Check**: `tsc --noEmit` must pass with zero errors
 
 ---
 
-## 🌐 Links
+### 🌐 Links
 
 - **Official Site**: [https://yyc3.0379.email](https://yyc3.0379.email)
 - **Documentation**: [https://docs.yyc3.0379.email](https://docs.yyc3.0379.email)
 - **GitHub**: [https://github.com/YYC-Cube/yyc3-learning-platform](https://github.com/YYC-Cube/yyc3-learning-platform)
-- **Docker Hub**: [https://hub.docker.com/u/yyc3](https://hub.docker.com/u/yyc3)
-- **Discord**: [https://discord.gg/yyccommunity](https://discord.gg/yyccommunity)
 
 ---
 
-## 📄 License
+### 📄 License
 
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
----
-
-<div align="center">
-
-**🚀 YYC³ AI Collaboration Platform - Empowering the Future of Intelligence!**
-
-Made with ❤️ by [YYC³ AI Team](mailto:admin@0379.email)
+This project is licensed under the **MIT License**.
 
 ---
 
-## 简体中文
+## 📖 简体中文
 
----
+### 🌟 项目概述
 
-## 🌟 项目概述
-
-YYC³（言语云立方）AI智能协作平台是一个**完全免费、开源**的企业级智能化协作解决方案，致力于推动人工智能技术的普及与应用。平台集成了最前沿的AI技术和企业级最佳实践，通过五大核心系统，为个人开发者、初创团队及企业用户提供全方位的智能化工作支持。
+YYC³（言语云立方）AI智能学习协作平台是一个**完全免费、开源**的企业级智能化协作解决方案，基于 Next.js 16 + React 19 构建。平台通过智能考试系统、课程管理、职业路径规划和企业AI组件，提供全方位的AI驱动学习体验。
 
 ### 🎯 我们的使命
 
@@ -567,467 +336,272 @@ YYC³（言语云立方）AI智能协作平台是一个**完全免费、开源**
 
 ### 💡 核心价值
 
-| 维度                                                        | 描述 |
-| ----------------------------------------------------------- | ---- |
-| 🎓 **教育普及** - 为学习者提供免费的AI学习资源和实践平台     |
-| 🔧 **开发者友好** - 降低AI应用开发门槛，提供完整的技术栈     |
-| 🏢 **企业就绪** - 满足企业级应用的高可用、高安全、高性能要求 |
-| 🌍 **开放生态** - 遵循开源理念，鼓励社区贡献与创新           |
+| 维度 | 描述 |
+| --- | --- |
+| 🎓 **教育普及** | 为学习者提供免费的AI学习资源和实践平台 |
+| 🔧 **开发者友好** | 降低AI应用开发门槛，提供完整的技术栈 |
+| 🏢 **企业就绪** | 满足企业级应用的高可用、高安全、高性能要求 |
+| 🌍 **开放生态** | 遵循开源理念，鼓励社区贡献与创新 |
+
+### 📊 项目状态（2026-05-19 审核）
+
+| 指标 | 数值 | 状态 |
+| --- | --- | --- |
+| TypeScript 编译 | **0 错误** | ✅ |
+| 测试文件 | **26 通过** / 26 | ✅ |
+| 测试用例 | **506 通过** / 506 | ✅ |
+| 核心覆盖率（行） | **89.27%** | ✅ |
+| 核心覆盖率（语句） | **89.37%** | ✅ |
+| 核心覆盖率（函数） | **75.55%** | ✅ |
+| 核心覆盖率（分支） | **86.30%** | ✅ |
+| 源代码文件（TS/TSX） | **278** | — |
+| UI 组件 | **115** | — |
+| 库模块 | **37** | — |
+| API 路由 | **14** | — |
+| 页面 | **24** | — |
+| 依赖 | **60** 运行时 + **35** 开发 | — |
 
 ---
 
-## 🏗️ 系统架构
-
-YYC³ 采用**基于微服务的分布式架构**，结合**事件驱动通信**模式，确保系统具备**高可扩展性**和**容错能力**。
+### 🏗️ 架构概览
 
 ```mermaid
 graph TB
     subgraph "表现层"
-        A[React 19 前端]
-        B[Next.js 16 SSR]
-        C[企业AI组件]
+        A[React 19 + Next.js 16 App Router]
+        B[企业AI组件]
+        C[24个页面路由]
     end
 
-    subgraph "API网关层"
-        D[API网关]
-        E[负载均衡]
-        F[速率限制器]
+    subgraph "API层"
+        D[14个API路由]
+        E[健康检查与指标]
+        F[课程与考试API]
     end
 
-    subgraph "核心服务层"
+    subgraph "核心模块"
         G[自主AI引擎]
         H[模型适配器]
         I[学习系统]
-        J[五维管理系统]
-        K[核心引擎]
+        J[性能监控]
     end
 
-    subgraph "数据层"
-        L[(PostgreSQL)]
-        M[(Redis缓存)]
-        N[(Neo4j图数据库)]
-    end
-
-    subgraph "监控与可观测性"
-        O[Prometheus]
-        P[Grafana]
-        Q[ELK日志栈]
+    subgraph "基础设施"
+        K[TypeScript 严格模式]
+        L[Vitest + V8 覆盖率]
+        M[Docker + pnpm 9]
     end
 
     A --> D
     B --> D
     C --> D
-    D --> E
-    E --> F
-    F --> G
-    F --> H
-    F --> I
-    F --> J
-    F --> K
-
-    G --> L
-    H --> M
-    I --> N
-    J --> L
-    K --> M
-
-    G --> O
-    H --> P
-    I --> Q
+    D --> G
+    D --> H
+    D --> I
+    D --> J
+    G --> K
+    H --> L
+    I --> M
 ```
 
 ---
 
-## 🔧 核心模块
+### 🔧 核心模块
 
-### 🧠 自主AI引擎
+#### 🧠 自主AI引擎
 
-**企业级自主决策引擎**，采用事件驱动架构和目标导向规划。
+企业级自主决策引擎，采用事件驱动架构和目标导向规划，位于 `packages/autonomous-engine/`。
 
-```typescript
-import { AutonomousAIEngine } from '@yyc3/autonomous-engine';
+#### 🔄 智能模型适配器
 
-const engine = new AutonomousAIEngine({
-  capabilities: {
-    eventDriven: true,
-    goalDriven: true,
-    collaborative: true,
-    learning: true
-  },
-  models: ['gpt-4', 'claude-3', 'gemini-pro']
-});
+统一AI模型编排层，具备智能路由和故障转移机制，支持多提供商集成。
 
-// 智能推理
-const result = await engine.reason({
-  context: {
-    situation: 'workflow_optimization',
-    environment: 'production'
-  },
-  constraints: ['time_limit', 'budget_limit'],
-  objectives: ['efficiency_improvement', 'cost_reduction']
-});
+#### 🎓 学习平台
+
+全功能学习管理系统，包含考试、课程和职业路径模块：
+
+- **考试系统**：练习考试、专业考试、调试模式
+- **课程管理**：课程目录、AI工程师方向、详情页
+- **职业路径**：学习路径规划、进度追踪
+- **社区**：团队协作、成就系统、数据分析
+
+#### 🎨 企业AI组件
+
+基于React的现代智能UI组件套件，位于 `components/intelligent-ai-widget/`：
+
+- 聊天界面与消息存储
+- 知识库管理
+- 工作流管理器
+- 工具箱面板
+
+---
+
+### 📊 技术栈
+
+#### 前端
+
+| 技术 | 版本 | 用途 |
+| --- | --- | --- |
+| **React** | 19.0 | UI框架，支持并发渲染 |
+| **Next.js** | 16.1 | React框架，App Router SSR/SSG |
+| **TypeScript** | 5.0+ | 类型安全开发（严格模式） |
+| **Tailwind CSS** | 3.4 | 实用优先CSS框架 |
+| **Radix UI** | 1.1+ | 无障碍组件基元 |
+| **Zod** | 3.24 | 运行时类型验证 |
+
+#### 后端与DevOps
+
+| 技术 | 版本 | 用途 |
+| --- | --- | --- |
+| **Node.js** | 18.0+ | JavaScript运行时 |
+| **pnpm** | 9+ | 快速、磁盘高效的包管理器 |
+| **Vitest** | 4.0 | 单元测试，V8覆盖率 |
+| **Docker** | Ready | 容器化部署 |
+
+#### AI集成
+
+| 技术 | 用途 |
+| --- | --- |
+| **OpenAI API** | GPT-4集成 |
+| **Anthropic Claude** | 高级对话AI |
+| **Google Gemini** | 多模态能力 |
+
+---
+
+### 📁 项目结构
+
+```
+yyc3-learning-platform/
+├── app/                          # Next.js 16 App Router
+│   ├── api/                      # 14个API路由
+│   │   ├── auth/                 # 认证（登录、注册）
+│   │   ├── courses/              # 课程管理
+│   │   ├── exams/                # 考试系统
+│   │   ├── health/               # 健康检查（存活、就绪）
+│   │   ├── metrics/              # 性能指标
+│   │   ├── performance/          # 性能监控
+│   │   ├── questions/            # 题目管理
+│   │   ├── teams/                # 团队协作
+│   │   └── user/                 # 用户管理
+│   ├── achievements/             # 成就系统
+│   ├── analytics/                # 数据分析
+│   ├── career-path/              # 职业规划
+│   ├── community/                # 社区功能
+│   ├── courses/                  # 课程页面（共24个）
+│   ├── exam/                     # 考试系统
+│   ├── learning-path/            # 学习路径
+│   ├── profile/                  # 用户资料与设置
+│   └── progress/                 # 进度追踪
+├── components/                   # 115个UI组件
+│   ├── ui/                       # shadcn/ui基础组件
+│   ├── intelligent-ai-widget/    # 企业AI组件
+│   └── theme-provider/           # 主题系统
+├── lib/                          # 37个库模块
+│   ├── auth.ts                   # 认证
+│   ├── database.ts               # 数据库层
+│   ├── api-client.ts             # API客户端
+│   ├── validators.ts             # Zod验证器
+│   ├── performance-monitor.ts    # 性能监控
+│   └── monitoring/               # 健康检查系统
+├── packages/                     # Monorepo包
+│   └── autonomous-engine/        # 自主AI引擎
+├── __tests__/                    # 测试套件（37个文件）
+└── vitest.config.ts              # Vitest配置
 ```
 
-**技术亮点:**
-- 🎯 **目标导向行动规划（GOAP）** 算法实现任务分解
-- 📊 **多目标优化（MOO）** 用于决策评估
-- 🔄 **事件驱动架构** 使用 EnhancedMessageBus
-- 🧠 **增强型决策引擎** 带置信度评分
-- 📈 **实时学习** 通过 EnhancedLearningSystem
-
 ---
 
-### 🔄 智能模型适配器
+### 🚀 快速开始
 
-**统一AI模型编排层**，具备智能路由和故障转移机制。
-
-```typescript
-import { ModelAdapter } from '@yyc3/model-adapter';
-
-const adapter = new ModelAdapter({
-  defaultModel: 'gpt-4',
-  fallbackModels: ['claude-3', 'gemini-pro'],
-  optimizationEnabled: true
-});
-
-// 智能模型选择
-const result = await adapter.processRequest({
-  type: 'text-generation',
-  input: '生成代码示例',
-  complexity: 'high',
-  priority: 'real-time'
-});
-```
-
-**技术亮点:**
-- 🤖 **多提供商支持**: OpenAI、Anthropic、Google、DeepSeek
-- 🎯 **智能路由**: LRU缓存配合自适应模型选择
-- 💰 **成本优化**: 智能预算分配和Token管理
-- 🔄 **自动故障转移**: 优雅降级与备用模型
-- 📊 **性能监控**: 实时指标与分析
-
----
-
-### 🎓 三层学习系统
-
-**分层学习架构**，实现行为、策略和知识三层学习。
-
-```typescript
-import { LearningSystem } from '@yyc3/learning-system';
-
-const learning = new LearningSystem();
-
-await learning.initialize({
-  behavioral: { enabled: true, modelType: 'classification' },
-  strategic: { enabled: true, planningHorizon: 90 },
-  knowledge: { enabled: true, graphSize: 100000 }
-});
-
-// 记录交互
-await learning.learn({
-  id: 'exp_001',
-  context: {
-    situation: { type: 'user_interaction' },
-    environment: { state: 'production' }
-  },
-  actions: [{ type: 'adjust', parameters: { learningRate: 0.01 } }],
-  outcomes: [{ success: true, effectiveness: 0.85 }],
-  feedback: { satisfaction: 0.9 }
-});
-```
-
-**技术亮点:**
-
-| 层次       | 架构           | 核心算法                     |
-| ---------- | -------------- | ---------------------------- |
-| **行为层** | 模式识别与分类 | LSTM、随机森林、K-Means      |
-| **策略层** | 目标导向规划   | GOAP、MCTS、强化学习         |
-| **知识层** | 知识图谱与推理 | 图神经网络、NLP、Transformer |
-
----
-
-### 📊 五维管理系统
-
-**全面的企业管理框架**，涵盖目标、技术、数据、UX和价值五大维度。
-
-```typescript
-import { createFiveDimensionalManagement } from '@yyc3/five-dimensional-management';
-
-const management = createFiveDimensionalManagement();
-
-// 目标管理
-await management.createGoal({
-  title: '提升客户满意度',
-  target: 90,
-  deadline: new Date('2024-12-31'),
-  metrics: [
-    { name: 'NPS评分', target: 50 },
-    { name: '客户留存率', target: 95 }
-  ]
-});
-
-// 获取仪表板洞察
-const insights = await management.getDashboardData();
-```
-
-**五大维度:**
-
-- 🎯 **目标维度**: 战略规划、KPI跟踪、OKR管理
-- 💻 **技术维度**: 性能监控、可靠性指标、安全合规
-- 📊 **数据维度**: 数据质量、数据治理、分析管道
-- 👥 **UX维度**: 用户体验、满意度指标、无障碍
-- 💰 **价值维度**: ROI分析、成本效率、业务影响
-
----
-
-### 🎨 企业AI组件
-
-**基于React的现代智能UI组件**，具备响应式设计和实时更新能力。
-
-```typescript
-import { EnterpriseAIWidget } from '@yyc3/widget-ui';
-
-export default function App() {
-  return (
-    <EnterpriseAIWidget
-      userId="user-123"
-      organizationId="org-456"
-      features={{
-        chat: true,
-        insights: true,
-        analytics: true,
-        goals: true
-      }}
-      theme="dark"
-    />
-  );
-}
-```
-
-**技术亮点:**
-- ⚛️ **React 19** 并发渲染
-- 🎨 **Radix UI** 无障碍组件
-- 🎯 **Framer Motion** 流畅动画
-- 📱 **响应式设计** 移动优先
-- 🎭 **主题系统** 深色/浅色模式支持
-
----
-
-## 📊 技术栈
-
-### 前端技术
-
-| 技术              | 版本   | 用途                   |
-| ----------------- | ------ | ---------------------- |
-| **React**         | 19.0   | UI框架，支持并发渲染   |
-| **Next.js**       | 16.1   | React框架，支持SSR/SSG |
-| **TypeScript**    | 5.0+   | 类型安全开发           |
-| **Tailwind CSS**  | 4.1    | 实用优先CSS框架        |
-| **Radix UI**      | Latest | 无障碍组件基元         |
-| **Framer Motion** | Latest | 声明式动画             |
-| **Zod**           | 3.24   | 运行时类型验证         |
-
-### 后端技术
-
-| 技术                | 版本   | 用途                 |
-| ------------------- | ------ | -------------------- |
-| **Node.js**         | 18.0+  | JavaScript运行时     |
-| **Bun**             | 1.0+   | 高性能运行时（推荐） |
-| **Express/Fastify** | Latest | Web框架              |
-| **PostgreSQL**      | 15+    | 主数据库             |
-| **Redis**           | 7.0+   | 缓存和会话存储       |
-| **Neo4j**           | 5.0+   | 知识层图数据库       |
-
-### AI/ML技术
-
-| 技术                 | 用途             |
-| -------------------- | ---------------- |
-| **TensorFlow.js**    | 浏览器端机器学习 |
-| **OpenAI API**       | GPT-4集成        |
-| **Anthropic Claude** | 高级对话AI       |
-| **Google Gemini**    | 多模态能力       |
-| **DeepSeek**         | 开源大语言模型   |
-
-### DevOps与基础设施
-
-| 技术           | 用途         |
-| -------------- | ------------ |
-| **Docker**     | 容器化       |
-| **Kubernetes** | 容器编排     |
-| **Prometheus** | 指标收集     |
-| **Grafana**    | 可视化仪表板 |
-| **ELK Stack**  | 集中式日志   |
-
----
-
-## 🚀 快速开始
-
-### 环境要求
+#### 环境要求
 
 - **Node.js**: >= 18.0.0
-- **Bun**: >= 1.0.0（推荐）
-- **Docker**: >= 20.0.0
-- **PostgreSQL**: >= 15.0
-- **Redis**: >= 7.0
+- **pnpm**: >= 9.0.0（推荐）
 
-### 安装步骤
+#### 安装步骤
 
 ```bash
 # 克隆仓库
 git clone https://github.com/YYC-Cube/yyc3-learning-platform.git
 cd yyc3-learning-platform
 
-# 安装依赖（推荐使用Bun）
-bun install
+# 安装依赖
+pnpm install
 
-# 复制环境变量文件
+# 复制环境变量
 cp .env.example .env
 
-# 配置环境变量
-# 编辑 .env 文件填入您的配置
+# 启动开发服务器
+pnpm dev
 ```
 
-### 开发模式
+#### 开发命令
 
 ```bash
-# 启动开发服务器
-bun run dev
-
-# 应用将在 http://localhost:3491 上运行
-
-# 运行测试
-bun test
-
-# 运行测试并生成覆盖率报告
-bun test:coverage
-
-# 类型检查
-bun run type-check
-
-# 代码检查
-bun run lint
+pnpm dev              # 启动开发服务器（端口 3491）
+pnpm build            # 生产构建
+pnpm test             # 运行测试
+pnpm test:coverage    # 运行测试并生成覆盖率报告
+pnpm type-check       # TypeScript类型检查（tsc --noEmit）
+pnpm lint             # ESLint代码检查
 ```
-
-### 生产部署
 
 #### Docker部署
 
 ```bash
-# 构建Docker镜像
 docker build -t yyc3-platform .
-
-# 使用Docker Compose启动
 docker-compose up -d
-
-# 检查服务状态
-docker-compose ps
-```
-
-#### Kubernetes部署
-
-```bash
-# 创建命名空间
-kubectl create namespace yyc3-platform
-
-# 应用配置
-kubectl apply -f deployments/microservices/kubernetes/
-
-# 检查部署状态
-kubectl get pods -n yyc3-platform
 ```
 
 ---
 
-## 📈 性能指标
+### 📈 测试覆盖率
 
-### 系统性能
+核心模块覆盖率（`coverage.include` 范围内）：
 
-| 指标             | 目标值  | 实际值     |
-| ---------------- | ------- | ---------- |
-| **API响应时间**  | < 200ms | 180ms 平均 |
-| **P99响应时间**  | < 500ms | 420ms      |
-| **页面加载时间** | < 2s    | 1.8s       |
-| **并发用户数**   | 10,000+ | 12,000+    |
+| 类别 | 行 | 语句 | 函数 | 分支 |
+| --- | --- | --- | --- | --- |
+| **整体** | **89.27%** | **89.37%** | **75.55%** | **86.30%** |
+| lib 工具类 | 95%+ | 95%+ | 90%+ | 90%+ |
+| API 路由 | 85%+ | 85%+ | 70%+ | 80%+ |
+| lib 基础设施 | 80%+ | 80%+ | 65%+ | 75%+ |
 
-### 系统可靠性
-
-| 指标             | 目标值  | 实际值     |
-| ---------------- | ------- | ---------- |
-| **系统可用性**   | 99.9%   | 99.95%     |
-| **错误率**       | < 0.1%  | 0.05%      |
-| **故障恢复时间** | < 5min  | 3分钟 平均 |
-| **数据持久性**   | 99.999% | 99.999%    |
-
-### 测试覆盖率
-
-| 组件         | 覆盖率  | 状态 |
-| ------------ | ------- | ---- |
-| 自主AI引擎   | 95%     | ✅    |
-| 模型适配器   | 92%     | ✅    |
-| 学习系统     | 88%     | ✅    |
-| 五维管理系统 | 90%     | ✅    |
-| Widget UI    | 85%     | ✅    |
-| **整体**     | **85%** | ✅    |
+所有覆盖率阈值设置为每项指标最低 **60%**。
 
 ---
 
-## 🔒 安全特性
+### 🔒 安全特性
 
-### 认证与授权
-
-- ✅ **基于JWT令牌的身份认证**，支持刷新令牌
-- ✅ **多因素认证（MFA）** 支持
-- ✅ **基于角色的访问控制（RBAC）**
-- ✅ **OAuth 2.0 / OpenID Connect** 集成
-
-### 数据保护
-
-- ✅ **端到端加密**（TLS 1.3）
-- ✅ **数据库加密**（静态加密）
-- ✅ **敏感数据脱敏**（日志中）
-- ✅ **GDPR合规** 就绪
-
-### 安全监控
-
-- ✅ **实时威胁检测**
-- ✅ **异常检测**（使用ML）
-- ✅ **安全审计日志**
-- ✅ **OWASP Top 10** 缓解
+- ✅ 基于JWT令牌的身份认证，支持刷新令牌
+- ✅ 基于角色的访问控制（RBAC）
+- ✅ 通过Zod模式进行输入验证
+- ✅ TypeScript严格模式确保类型安全
+- ✅ OWASP最佳实践合规
 
 ---
 
-## 📚 API文档
+### 📚 API端点
 
-### 认证
-
-所有API请求需要在请求头中包含有效的JWT令牌：
-
-```http
-Authorization: Bearer <your-jwt-token>
-```
-
-### 核心API端点
-
-| 端点                           | 方法     | 描述               |
-| ------------------------------ | -------- | ------------------ |
-| `/api/v1/engine/reason`        | POST     | AI推理引擎         |
-| `/api/v1/engine/plan`          | POST     | 任务规划           |
-| `/api/v1/engine/execute`       | POST     | 执行任务           |
-| `/api/v1/adapter/process`      | POST     | 使用模型适配器处理 |
-| `/api/v1/learning/record`      | POST     | 记录交互           |
-| `/api/v1/learning/insights`    | GET      | 获取学习洞察       |
-| `/api/v1/management/goals`     | POST/GET | 目标管理           |
-| `/api/v1/management/dashboard` | GET      | 仪表板数据         |
-
-完整API文档，请访问: [https://docs.yyc3.0379.email/api](https://docs.yyc3.0379.email/api)
+| 端点 | 方法 | 描述 |
+| --- | --- | --- |
+| `/api/auth/login` | POST | 用户登录 |
+| `/api/auth/register` | POST | 用户注册 |
+| `/api/courses` | GET | 课程列表 |
+| `/api/exams/[id]` | GET | 考试详情 |
+| `/api/health` | GET | 健康检查 |
+| `/api/health/live` | GET | 存活探针 |
+| `/api/health/ready` | GET | 就绪探针 |
+| `/api/metrics` | GET | 性能指标 |
+| `/api/performance` | GET | 性能监控 |
+| `/api/performance/alerts` | GET | 性能告警 |
+| `/api/questions` | GET | 题目列表 |
+| `/api/questions/[id]` | GET | 题目详情 |
+| `/api/teams` | GET | 团队列表 |
+| `/api/user` | GET | 用户资料 |
 
 ---
 
-## 🤝 贡献指南
-
-我们欢迎所有贡献！请参阅我们的[贡献指南](CONTRIBUTING.md)了解详情。
-
-### 开发流程
+### 🤝 贡献指南
 
 1. Fork仓库
 2. 创建功能分支（`git checkout -b feature/AmazingFeature`）
@@ -1035,46 +609,30 @@ Authorization: Bearer <your-jwt-token>
 4. 推送到分支（`git push origin feature/AmazingFeature`）
 5. 创建Pull Request
 
-### 代码质量标准
+**代码质量标准：**
 
-- **TypeScript**: 启用严格模式，零`any`类型
-- **测试**: 要求至少80%的覆盖率
-- **代码检查**: ESLint + Prettier
-- **文档**: 公共API需有JSDoc注释
-
----
-
-## 🌐 相关链接
-
-- **官方网站**: [https://yyc3.0379.email](https://yyc3.0379.email)
-- **文档中心**: [https://docs.yyc3.0379.email](https://docs.yyc3.0379.email)
-- **GitHub**: [https://github.com/YYC-Cube/yyc3-learning-platform](https://github.com/YYC-Cube/yyc3-learning-platform)
-- **Docker Hub**: [https://hub.docker.com/u/yyc3](https://hub.docker.com/u/yyc3)
-- **Discord社区**: [https://discord.gg/yyccommunity](https://discord.gg/yyccommunity)
+- **TypeScript**：启用严格模式，零编译错误
+- **测试**：要求至少60%的覆盖率（核心模块目标80%+）
+- **代码检查**：ESLint + Prettier
+- **类型检查**：`tsc --noEmit` 必须零错误通过
 
 ---
 
-## 📄 许可证
+### 🌐 相关链接
 
-本项目采用 **MIT 许可证** - 查看 [LICENSE](LICENSE) 文件了解详情。
-
----
-
-**🚀 YYC³ AI智能协作平台 - 智启未来，共创辉煌！**
-
-由 [YYC³ AI团队](mailto:admin@0379.email) 用❤️打造
+- **官方网站**：[https://yyc3.0379.email](https://yyc3.0379.email)
+- **文档中心**：[https://docs.yyc3.0379.email](https://docs.yyc3.0379.email)
+- **GitHub**：[https://github.com/YYC-Cube/yyc3-learning-platform](https://github.com/YYC-Cube/yyc3-learning-platform)
 
 ---
 
-<div align="center">
+### 📄 许可证
 
-## 📄 文档页脚
+本项目采用 **MIT 许可证**。
 
-> 「**YanYuCloudCube**」
-> 「**<admin@0379.email>**」
+---
 
-> 「**Words Initiate Quadrants, Language Serves as Core for the Future**」
-
-> 「**All things converge in the cloud pivot; Deep stacks ignite a new era of intelligence**」
-
-</div>
+> 「***YanYuCloudCube***」
+> 「***<admin@0379.email>***」
+> 「***Words Initiate Quadrants, Language Serves as Core for the Future***」
+> 「***All things converge in the cloud pivot; Deep stacks ignite a new era of intelligence***」

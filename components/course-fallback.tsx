@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · course-fallback.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 interface CourseFallbackProps {
   title: string
   color: string

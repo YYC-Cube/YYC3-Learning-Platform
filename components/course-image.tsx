@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · course-image.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 import Image from "next/image"
 import { useState } from "react"
 
@@ -29,6 +35,14 @@ export function CourseImage({ src, alt, title, color, className = "" }: CourseIm
   const handleImageError = () => {
     setImageError(true)
   }
+
+  // 使用设计系统CSS变量替代硬编码颜色
+  const cBlue = "var(--brand-blue)"
+  const cViolet = "var(--brand-violet)"
+  const cPink = "var(--brand-pink)"
+  const cWhite = "var(--svg-white)"
+  const cTextLight = "var(--brand-text-light)"
+  const cWhite80 = "var(--svg-white-80)"
 
   // DeepSeek专用高级SVG设计
   if (sanitizedTitle.includes("DeepSeek")) {
@@ -74,14 +88,14 @@ export function CourseImage({ src, alt, title, color, className = "" }: CourseIm
                   <defs>
                     {/* 渐变定义 */}
                     <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#60A5FA" />
-                      <stop offset="50%" stopColor="#A78BFA" />
-                      <stop offset="100%" stopColor="#F472B6" />
+                      <stop offset="0%" stopColor={cBlue} />
+                      <stop offset="50%" stopColor={cViolet} />
+                      <stop offset="100%" stopColor={cPink} />
                     </linearGradient>
 
                     <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#FFFFFF" />
-                      <stop offset="100%" stopColor="#E0E7FF" />
+                      <stop offset="0%" stopColor={cWhite} />
+                      <stop offset="100%" stopColor={cTextLight} />
                     </linearGradient>
 
                     {/* 发光效果 */}
@@ -212,17 +226,17 @@ export function CourseImage({ src, alt, title, color, className = "" }: CourseIm
 
                   {/* 数据流效果 */}
                   <g>
-                    <circle r="2" fill="#60A5FA" opacity="0.8">
+                    <circle r="2" fill={cBlue} opacity="0.8">
                       <animateMotion dur="3s" repeatCount="indefinite">
                         <path d="M 24 20 Q 50 15 76 30" />
                       </animateMotion>
                     </circle>
-                    <circle r="2" fill="#A78BFA" opacity="0.8">
+                    <circle r="2" fill={cViolet} opacity="0.8">
                       <animateMotion dur="3s" repeatCount="indefinite" begin="1s">
                         <path d="M 24 30 Q 50 30 76 30" />
                       </animateMotion>
                     </circle>
-                    <circle r="2" fill="#F472B6" opacity="0.8">
+                    <circle r="2" fill={cPink} opacity="0.8">
                       <animateMotion dur="3s" repeatCount="indefinite" begin="2s">
                         <path d="M 24 40 Q 50 45 76 30" />
                       </animateMotion>
@@ -246,7 +260,7 @@ export function CourseImage({ src, alt, title, color, className = "" }: CourseIm
                     x="80"
                     y="90"
                     textAnchor="middle"
-                    fill="rgba(255,255,255,0.8)"
+                    fill={cWhite80}
                     fontSize="10"
                     fontFamily="Arial, sans-serif"
                   >

@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 键盘按键展示组件
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT */
+
 import { cn } from '@/lib/utils'
 
 function Kbd({ className, ...props }: React.ComponentProps<'kbd'>) {

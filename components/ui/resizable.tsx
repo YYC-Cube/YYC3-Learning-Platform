@@ -1,4 +1,16 @@
+/**
+ * @fileoverview UI组件 · resizable.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 'use client'
+
+/**
+ * @fileoverview 可调整大小容器组件
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT */
 
 import { GripVertical } from 'lucide-react'
 import * as ResizablePrimitive from 'react-resizable-panels'

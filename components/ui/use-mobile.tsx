@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 移动端检测Hook
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT */
+
 import * as React from 'react'
 
 const MOBILE_BREAKPOINT = 768

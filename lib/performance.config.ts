@@ -165,8 +165,8 @@ export function generatePerformanceReport(
   metrics: PerformanceMetric[]
 ): PerformanceReport {
   const passCount = metrics.filter(m => m.status === 'pass').length
-  const warningCount = metrics.filter(m => m.status === 'warning').length
-  const failCount = metrics.filter(m => m.status === 'fail').length
+  const _warningCount = metrics.filter(m => m.status === 'warning').length
+  const _failCount = metrics.filter(m => m.status === 'fail').length
   
   const overallScore = Math.round(
     (passCount / metrics.length) * 100

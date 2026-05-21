@@ -1,11 +1,7 @@
 /**
- * @file 应用初始化模块
- * @description 在应用启动时执行初始化任务，包括环境变量验证
- * @module init
- * @author YYC³
+ * @fileoverview 工具函数/库 · init.ts
+ * @author YYC³ <admin@0379.email>
  * @version 1.0.0
- * @created 2025-12-06
- * @copyright Copyright (c) 2025 YYC³
  * @license MIT
  */
 import { validateEnvConfig, getEnvInfo } from './env';
@@ -27,7 +23,7 @@ export function initializeApp(): void {
 
     if (process.env.NODE_ENV === 'development') {
       const envInfo = getEnvInfo();
-      console.log('应用环境配置', envInfo);
+      console.warn('应用环境配置', envInfo);
     }
   } catch (error) {
     logError(error, { context: '应用初始化' });

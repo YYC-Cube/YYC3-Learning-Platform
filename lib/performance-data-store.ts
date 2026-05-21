@@ -416,7 +416,8 @@ class PerformanceDataStore {
 
   clearOldData(maxAge: number) {
     const cutoff = Date.now() - maxAge
-    const oldCount = this.data.length
+    const oldDataCount = this.data.length
+    const oldAlertCount = this.alerts.length
 
     this.data = this.data.filter(d => d.timestamp > cutoff)
     this.alerts = this.alerts.filter(a => a.timestamp > cutoff)
@@ -426,8 +427,8 @@ class PerformanceDataStore {
     }
 
     return {
-      deletedData: oldCount - this.data.length,
-      deletedAlerts: oldCount - this.alerts.length,
+      deletedData: oldDataCount - this.data.length,
+      deletedAlerts: oldAlertCount - this.alerts.length,
     }
   }
 

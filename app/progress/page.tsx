@@ -1,9 +1,15 @@
+/**
+ * @fileoverview 页面组件 · page.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
-import { TrendingUp, Calendar, Trophy, Target, Clock, BookOpen, Award } from "lucide-react"
+import { Calendar, Trophy, Target, Clock, BookOpen, Award } from "lucide-react"
 import { ResponsiveLayout } from "@/components/responsive-layout"
 
 export default function ProgressPage() {

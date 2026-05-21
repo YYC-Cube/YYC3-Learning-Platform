@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 页面组件 · page.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { useState } from "react"
@@ -11,7 +17,6 @@ import { ColoredProgress } from "@/components/colored-progress"
 import { ImageFallback } from "@/components/image-fallback"
 import { ResponsiveLayout } from "@/components/responsive-layout"
 import { Users, Plus, Search, Crown, Star, Trophy, Calendar, MessageSquare, Target } from "lucide-react"
-import Link from "next/link"
 
 export default function TeamPage() {
   const [searchTerm, setSearchTerm] = useState("")

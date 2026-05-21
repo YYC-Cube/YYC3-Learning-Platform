@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · exam-progress-tracker.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { useState } from "react"
@@ -35,7 +41,7 @@ export function ExamProgressTracker({
     return "unanswered"
   }
 
-  const getStatusIcon = (status: string) => {
+  const _getStatusIcon = (status: string) => {
     switch (status) {
       case "current":
         return <AlertCircle className="h-4 w-4 text-blue-600" />

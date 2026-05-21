@@ -1,11 +1,8 @@
 /**
- * @file 环境变量验证模块
- * @description 使用Zod验证所有环境变量，确保类型安全和配置完整性
- * @module env
- * @author YYC³
- * @version 2.0.0
- * @created 2025-03-17
- * @updated 2025-12-06
+ * @fileoverview 工具函数/库 · env.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
  */
 import dotenv from 'dotenv';
 import { z } from 'zod';
@@ -24,7 +21,13 @@ const envSchema = z.object({
   DB_HOST: z.string().min(1, "DB_HOST 不能为空").optional().default('localhost'),
   DB_PORT: z.string().regex(/^[0-9]+$/, "DB_PORT 必须是数字").optional().default('5432'),
   DB_USER: z.string().min(1, "DB_USER 不能为空").optional().default('postgres'),
-  DB_PASS: z.string().min(1, "DB_PASS 不能为空").optional().default(''),
+  DB_PASS: z.string().min(1, "DB_PASS 不能为空").refine(
+    (val) => {
+      if (process.env.NODE_ENV === 'production') return val.length > 0 && val !== 'your_secure_password_here';
+      return true;
+    },
+    { message: "生产环境 DB_PASS 不能为空或使用默认密码" }
+  ).optional().default(''),
   DB_NAME: z.string().min(1, "DB_NAME 不能为空").optional().default('ai_learning'),
   DB_SSL: z.string().regex(/^(true|false)$/, "DB_SSL 必须是 true 或 false").optional().default('false'),
   DB_CONNECTION_LIMIT: z.string().regex(/^[0-9]+$/, "DB_CONNECTION_LIMIT 必须是数字").optional().default('10'),
@@ -35,7 +38,18 @@ const envSchema = z.object({
   DATABASE_URL: z.string().url("DATABASE_URL 必须是有效的数据库连接URL").optional(),
   
   // JWT配置
-  JWT_SECRET: z.string().min(32, "JWT_SECRET 至少需要32个字符").optional(),
+  JWT_SECRET: z.string().min(32, "JWT_SECRET 至少需要32个字符").refine(
+    (val) => {
+      if (process.env.NODE_ENV === 'production') return val.length >= 32;
+      return true;
+    },
+    { message: "生产环境 JWT_SECRET 必须至少32个字符" }
+  ).optional().default(() => {
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error('生产环境必须设置 JWT_SECRET 环境变量');
+    }
+    return 'dev-only-insecure-jwt-secret-do-not-use-in-production';
+  }),
   JWT_EXPIRES_IN: z.string().regex(/^\d+[smhd]$/, "JWT_EXPIRES_IN 格式不正确，例如: 7d, 1h, 30m").optional().default('7d'),
   
   // BCrypt配置
@@ -233,8 +247,8 @@ export function getEnvInfo(): Record<string, any> {
   const dbPort = parseInt(currentEnv.DB_PORT || '5432', 10);
   const bcryptRounds = parseInt(currentEnv.BCRYPT_ROUNDS || '10', 10);
   const dbConnectionLimit = parseInt(currentEnv.DB_CONNECTION_LIMIT || '10', 10);
-  const dbIdleTimeout = parseInt(currentEnv.DB_IDLE_TIMEOUT || '30000', 10);
-  const dbMaxLifetime = parseInt(currentEnv.DB_MAX_LIFETIME || '600000', 10);
+  const _dbIdleTimeout = parseInt(currentEnv.DB_IDLE_TIMEOUT || '30000', 10);
+  const _dbMaxLifetime = parseInt(currentEnv.DB_MAX_LIFETIME || '600000', 10);
   const dbSsl = (currentEnv.DB_SSL || 'false').toLowerCase() === 'true';
 
   return {

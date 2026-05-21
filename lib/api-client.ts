@@ -1,11 +1,8 @@
 /**
  * @fileoverview API客户端工具
  * @description 封装HTTP请求方法，提供统一的API调用接口
- * @author YYC³
+ * @author YYC³ <admin@0379.email>
  * @version 1.0.0
- * @created 2025-03-17
- * @modified 2025-03-17
- * @copyright Copyright (c) 2025 YYC³
  * @license MIT
  */
 import { env } from "./env"

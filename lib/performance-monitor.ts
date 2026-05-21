@@ -54,7 +54,7 @@ class PerformanceMonitor {
     this.isInitialized = true
 
     if (this.options.enableConsoleLog) {
-      console.log('🚀 PerformanceMonitor initialized')
+      console.warn('🚀 PerformanceMonitor initialized')
     }
   }
 
@@ -65,10 +65,6 @@ class PerformanceMonitor {
 
     onFCP((metric) => {
       this.recordMetric('firstContentfulPaint', metric.value)
-    })
-
-    onFID((metric) => {
-      this.recordMetric('firstInputDelay', metric.value)
     })
 
     onINP((metric) => {
@@ -139,7 +135,7 @@ class PerformanceMonitor {
 
     if (this.options.enableConsoleLog) {
       const statusIcon = metric.status === 'pass' ? '✅' : metric.status === 'warning' ? '⚡' : '❌'
-      console.log(`${statusIcon} ${name}: ${metric.value}${metric.unit} (阈值: ${metric.threshold}${metric.unit})`)
+      console.warn(`${statusIcon} ${name}: ${metric.value}${metric.unit} (阈值: ${metric.threshold}${metric.unit})`)
     }
   }
 
@@ -160,7 +156,8 @@ class PerformanceMonitor {
       this.recordMetric('componentRenderTime', measure.duration)
     }
 
-    performance.clearMarks(startMark, endMark)
+    performance.clearMarks(startMark)
+    performance.clearMarks(endMark)
     performance.clearMeasures(measureName)
   }
 
@@ -181,13 +178,15 @@ class PerformanceMonitor {
           this.recordMetric('databaseQueryTime', measure.duration)
         }
 
-        performance.clearMarks(startMark, endMark)
+        performance.clearMarks(startMark)
+        performance.clearMarks(endMark)
         performance.clearMeasures(measureName)
 
         return result
       })
       .catch((error) => {
-        performance.clearMarks(startMark, endMark)
+        performance.clearMarks(startMark)
+        performance.clearMarks(endMark)
         throw error
       })
   }
@@ -209,13 +208,15 @@ class PerformanceMonitor {
           this.recordMetric('apiResponseTime', measure.duration)
         }
 
-        performance.clearMarks(startMark, endMark)
+        performance.clearMarks(startMark)
+        performance.clearMarks(endMark)
         performance.clearMeasures(measureName)
 
         return result
       })
       .catch((error) => {
-        performance.clearMarks(startMark, endMark)
+        performance.clearMarks(startMark)
+        performance.clearMarks(endMark)
         throw error
       })
   }
@@ -236,7 +237,7 @@ class PerformanceMonitor {
     const report = generatePerformanceReport(metrics)
 
     if (this.options.enableConsoleLog) {
-      console.log(formatPerformanceReport(report))
+      console.warn(formatPerformanceReport(report))
     }
 
     return report

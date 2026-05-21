@@ -1,9 +1,8 @@
 /**
- * @file 客户端错误处理模块
- * @description 客户端安全的错误处理功能
- * @module error-handler.client
- * @author YYC³
+ * @fileoverview 工具函数/库 · error-handler.client.ts
+ * @author YYC³ <admin@0379.email>
  * @version 1.0.0
+ * @license MIT
  */
 
 import { logger } from "./logger";

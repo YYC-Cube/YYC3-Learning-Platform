@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 源代码文件 · types.d.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 // 全局类型定义文件
 
 // API响应基础类型

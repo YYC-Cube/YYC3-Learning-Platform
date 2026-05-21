@@ -1,13 +1,13 @@
 /**
- * @file toolbox-panel.tsx
- * @description 工具箱面板组件，提供工具管理、执行和推荐功能
+ * @fileoverview UI组件 · toolbox-panel.tsx
  * @author YYC³ <admin@0379.email>
  * @version 1.0.0
+ * @license MIT
  */
 
 "use client";
 
-import { Search, Star, Clock, Grid, List, Zap, BookOpen, Settings, Play, Plus } from 'lucide-react';
+import { Search, Star, Clock, Grid, List, Zap, BookOpen, Play } from 'lucide-react';
 import * as React from 'react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -66,11 +66,11 @@ export const ToolboxPanel: React.FC<ToolboxPanelProps> = ({
   onToolPin
 }) => {
   const [tools, setTools] = useState<Tool[]>([]);
-  const [filter, setFilter] = useState<ToolFilter>({});
+  const [_filter, _setFilter] = useState<ToolFilter>({});
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [executingTool, setExecutingTool] = useState<string | null>(null);
+  const [_executingTool, setExecutingTool] = useState<string | null>(null);
 
   useEffect(() => {
     loadTools();
@@ -399,6 +399,8 @@ const ToolCard: React.FC<ToolCardProps> = React.memo(({ tool, onExecute, onPin }
       <div className="flex items-start justify-between mb-2">
         <div className="text-3xl">{tool.icon}</div>
         <button
+          type="button"
+          title={tool.isPinned ? '取消置顶' : '置顶'}
           onClick={(e) => {
             e.stopPropagation();
             onPin(tool.id, !tool.isPinned);

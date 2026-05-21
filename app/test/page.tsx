@@ -1,6 +1,11 @@
+/**
+ * @fileoverview 页面组件 · page.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
-import { useState } from "react"
 import { ResponsiveLayout } from "@/components/responsive-layout"
 
 export default function TestPage() {

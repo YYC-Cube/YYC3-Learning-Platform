@@ -5,8 +5,13 @@ node_modules/
 
 # Testing
 coverage/
+coverage-*/
 *.lcov
 .nyc_output/
+
+# Build artifacts
+html/
+lighthouse-report.report.*
 
 # Production builds
 dist/

@@ -1,16 +1,22 @@
+/**
+ * @fileoverview UI组件 · comprehensive-exam.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
-import { useState, useEffect, useCallback, useMemo } from "react"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
-import { Textarea } from "@/components/ui/textarea"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
-import { Clock, CheckCircle, BookOpen, Award } from "lucide-react"
+import { Progress } from "@/components/ui/progress"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Textarea } from "@/components/ui/textarea"
 import type { ComprehensiveExamQuestion } from "@/data/comprehensive-exam-questions"
+import { Award, BookOpen, CheckCircle, Clock } from "lucide-react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 
 interface ComprehensiveExamProps {
   examType: string
@@ -221,7 +227,7 @@ export function ComprehensiveExam({ examType, questions, onComplete }: Comprehen
             <div>
               <CardTitle className="flex items-center gap-2">
                 <BookOpen className="h-5 w-5 text-blue-600" />
-                AI大模型综合考试
+                {examType === "comprehensive" ? "AI大模型综合考试" : examType === "practice" ? "AI大模型练习" : "AI考试"}
               </CardTitle>
               <CardDescription>
                 第 {currentQuestionIndex + 1} 题 / 共 {questions.length} 题

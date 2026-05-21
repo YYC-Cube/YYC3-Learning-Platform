@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · learning-path.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -29,7 +35,7 @@ export function LearningPath({ courses, currentCourseId, className }: LearningPa
     }
   }
 
-  const isCompleted = (courseId: string) => {
+  const isCompleted = (_courseId: string) => {
     // 这里可以根据实际的学习进度数据来判断
     return false
   }

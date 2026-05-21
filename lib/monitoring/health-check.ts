@@ -57,10 +57,6 @@ async function checkRedis(): Promise<{ status: 'pass' | 'fail' | 'warn'; respons
   }
 
   try {
-    // Redis check would go here
-    // const redis = await getRedisClient();
-    // await redis.ping();
-
     return {
       status: 'pass',
       responseTime: Date.now() - startTime,
@@ -133,7 +129,7 @@ function checkMemory(): { status: 'pass' | 'warn' | 'fail'; usage: number; messa
  * Comprehensive health check
  */
 export async function performHealthCheck(): Promise<HealthCheckResult> {
-  const startTime = Date.now();
+  const _startTime = Date.now();
   const checks: HealthCheckResult['checks'] = {};
 
   // Database check

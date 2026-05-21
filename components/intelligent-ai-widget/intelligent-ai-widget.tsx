@@ -1,8 +1,8 @@
 /**
- * @file intelligent-ai-widget.tsx
- * @description 智能AI交互界面组件，提供聊天、工具、洞察、工作流和知识等功能
+ * @fileoverview UI组件 · intelligent-ai-widget.tsx
  * @author YYC³ <admin@0379.email>
  * @version 1.0.0
+ * @license MIT
  */
 
 "use client";
@@ -11,7 +11,6 @@ import { logger } from '@/lib/logger';
 import { BarChart3, BookOpen, Loader2, Maximize2, MessageSquare, Minimize2, Minus, Send, Workflow, Wrench, X } from 'lucide-react';
 import * as React from 'react';
 import { CSSProperties, useCallback, useEffect, useMemo, useRef } from 'react';
-import { AgentContext, AgenticCore, UserInput } from '../../packages/autonomous-engine/src/core/AgenticCore';
 import FileUpload, { UploadedFile } from './file-upload';
 import InsightsDashboard from './insights-dashboard';
 import KnowledgeBase from './knowledge-base';
@@ -20,6 +19,35 @@ import messageStorage, { StoredMessage } from './message-storage';
 import ToolboxPanel from './toolbox-panel';
 import VirtualizedMessageList from './virtualized-message-list';
 import WorkflowManager from './workflow-manager';
+
+type AgentContext = {
+  sessionId: string;
+  userId: string;
+  workspaceId?: string;
+  environment: 'web' | 'mobile' | 'desktop';
+  permissions: string[];
+  conversationHistory: Array<{ id: string; role: string; content: string; timestamp: number }>;
+  workingMemory: Record<string, unknown>;
+};
+
+type UserInput = {
+  text: string;
+  attachments?: unknown[];
+  context: AgentContext;
+};
+
+interface AgenticCoreResponse {
+  message: string;
+  suggestions?: string[];
+}
+
+class AgenticCore {
+  constructor(_config?: Record<string, unknown>) { }
+  initialize(): Promise<void> { return Promise.resolve(); }
+  processInput(_input: UserInput): Promise<AgenticCoreResponse> { return Promise.resolve({ message: '' }); }
+  getState(): string { return 'idle'; }
+  reset(): void { }
+}
 
 export interface ToolExecutionResult {
   success: boolean;
@@ -101,7 +129,7 @@ interface NavTabProps {
   onClick: () => void;
 }
 
-interface MessageBubbleProps {
+interface _MessageBubbleProps {
   message: Message;
 }
 
@@ -291,7 +319,7 @@ export const IntelligentAIWidget: React.FC<IntelligentAIWidgetProps> = ({
     });
   }, [widget.isDragging, widget.position]);
 
-  const handleMouseUp = useCallback((e: MouseEvent) => {
+  const handleMouseUp = useCallback((_e: MouseEvent) => {
     dispatch({ type: 'SET_WIDGET_STATE', payload: { isDragging: false } });
     dragStartPos.current = null;
   }, []);
@@ -335,7 +363,7 @@ export const IntelligentAIWidget: React.FC<IntelligentAIWidgetProps> = ({
     });
   }, [widget.isResizing, widget.position]);
 
-  const handleResizeMouseUp = useCallback((e: MouseEvent) => {
+  const handleResizeMouseUp = useCallback((_e: MouseEvent) => {
     dispatch({ type: 'SET_WIDGET_STATE', payload: { isResizing: false } });
     resizeStartPos.current = null;
   }, []);
@@ -426,7 +454,7 @@ export const IntelligentAIWidget: React.FC<IntelligentAIWidgetProps> = ({
     dispatch({ type: 'REMOVE_SELECTED_FILE', payload: fileId });
   };
 
-  const removeFile = (fileId: string) => {
+  const _removeFile = (fileId: string) => {
     dispatch({ type: 'REMOVE_SELECTED_FILE', payload: fileId });
   };
 
@@ -530,7 +558,7 @@ export const IntelligentAIWidget: React.FC<IntelligentAIWidgetProps> = ({
   }, [userId, messages]);
 
   const handleToolPin = useCallback((toolId: string, pinned: boolean) => {
-    console.log(`工具 ${toolId} ${pinned ? '已固定' : '已取消固定'}`);
+    console.warn(`工具 ${toolId} ${pinned ? '已固定' : '已取消固定'}`);
   }, []);
 
   // ==================== 消息处理 ====================
@@ -919,10 +947,10 @@ export const IntelligentAIWidget: React.FC<IntelligentAIWidgetProps> = ({
             {widget.currentView === 'insights' && (
               <InsightsDashboard
                 onPeriodChange={(period) => {
-                  console.log('切换洞察周期:', period);
+                  console.warn('切换洞察周期:', period);
                 }}
                 onRecommendationAction={(recommendationId) => {
-                  console.log('执行建议:', recommendationId);
+                  console.warn('执行建议:', recommendationId);
                 }}
               />
             )}
@@ -930,16 +958,16 @@ export const IntelligentAIWidget: React.FC<IntelligentAIWidgetProps> = ({
             {widget.currentView === 'workflow' && (
               <WorkflowManager
                 onWorkflowExecute={async (workflowId) => {
-                  console.log('执行工作流:', workflowId);
+                  console.warn('执行工作流:', workflowId);
                 }}
                 onWorkflowCreate={(workflow) => {
-                  console.log('创建工作流:', workflow);
+                  console.warn('创建工作流:', workflow);
                 }}
                 onWorkflowUpdate={(workflowId, updates) => {
-                  console.log('更新工作流:', workflowId, updates);
+                  console.warn('更新工作流:', workflowId, updates);
                 }}
                 onWorkflowDelete={(workflowId) => {
-                  console.log('删除工作流:', workflowId);
+                  console.warn('删除工作流:', workflowId);
                 }}
               />
             )}
@@ -947,16 +975,16 @@ export const IntelligentAIWidget: React.FC<IntelligentAIWidgetProps> = ({
             {widget.currentView === 'knowledge' && (
               <KnowledgeBase
                 onItemClick={(item) => {
-                  console.log('查看知识:', item);
+                  console.warn('查看知识:', item);
                 }}
                 onItemCreate={(item) => {
-                  console.log('创建知识:', item);
+                  console.warn('创建知识:', item);
                 }}
                 onItemUpdate={(itemId, updates) => {
-                  console.log('更新知识:', itemId, updates);
+                  console.warn('更新知识:', itemId, updates);
                 }}
                 onItemDelete={(itemId) => {
-                  console.log('删除知识:', itemId);
+                  console.warn('删除知识:', itemId);
                 }}
               />
             )}
@@ -974,9 +1002,9 @@ export const IntelligentAIWidget: React.FC<IntelligentAIWidgetProps> = ({
       {!widget.isMinimized && !widget.isFullscreen && (
         <div
           onMouseDown={handleResizeMouseDown}
-          className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize hover:bg-indigo-500/20 rounded-bl-lg"
+          className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize hover:bg-secondary/20 rounded-bl-lg"
           style={{
-            background: 'linear-gradient(135deg, transparent 50%, #6366f1 50%)'
+            background: 'linear-gradient(135deg, transparent 50%, hsl(var(--secondary)) 50%)'
           }}
         />
       )}

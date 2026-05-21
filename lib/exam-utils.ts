@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 工具函数/库 · exam-utils.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 export interface Question {
   id: string
   text: string

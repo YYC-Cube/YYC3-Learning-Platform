@@ -1,3 +1,10 @@
+/**
+ * @fileoverview 日志工具模块
+ * @description 提供统一的应用日志记录功能，支持多级别日志输出
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 export enum LogLevel {
   DEBUG = 0,
   INFO = 1,
@@ -38,12 +45,14 @@ export class Logger {
 
   debug(message: string, data?: any): void {
     if (this.shouldLog(LogLevel.DEBUG)) {
+      // eslint-disable-next-line no-console
       console.log(this.formatMessage('DEBUG', message, data));
     }
   }
 
   info(message: string, data?: any): void {
     if (this.shouldLog(LogLevel.INFO)) {
+      // eslint-disable-next-line no-console
       console.log(this.formatMessage('INFO', message, data));
     }
   }

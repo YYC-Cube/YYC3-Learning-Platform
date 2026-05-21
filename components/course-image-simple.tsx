@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · course-image-simple.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 import Image from "next/image"
 
 interface CourseImageProps {
@@ -9,6 +15,7 @@ interface CourseImageProps {
 }
 
 export function CourseImageSimple({ src, alt, title, color, className = "" }: CourseImageProps) {
+  const gradientStyle = color ? { background: `linear-gradient(135deg, ${color}, ${color}88)` } : {}
   // 简约版DeepSeek设计
   if (title.includes("DeepSeek")) {
     return (
@@ -60,14 +67,16 @@ export function CourseImageSimple({ src, alt, title, color, className = "" }: Co
   }
 
   return (
-    <div className={`relative overflow-hidden ${className}`}>
-      <Image
-        src={src || "/placeholder.svg"}
-        alt={alt}
-        fill
-        className="object-cover transition-transform duration-300 hover:scale-105"
-        unoptimized
-      />
+    <div className={`relative overflow-hidden ${className}`} style={gradientStyle}>
+      {!color && (
+        <Image
+          src={src || "/placeholder.svg"}
+          alt={alt}
+          fill
+          className="object-cover transition-transform duration-300 hover:scale-105"
+          unoptimized
+        />
+      )}
     </div>
   )
 }

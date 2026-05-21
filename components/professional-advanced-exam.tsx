@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · professional-advanced-exam.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
@@ -101,30 +107,6 @@ export function ProfessionalAdvancedExam({ examType, timeLimit = 120, onComplete
     setExamQuestions(questions)
   }, [examType])
 
-  // 计时器
-  useEffect(() => {
-    if (!examStarted || examCompleted) return
-
-    const timer = setInterval(() => {
-      setTimeRemaining((prev) => {
-        if (prev <= 1) {
-          // 避免在useEffect中直接调用handleSubmitExam
-          return 0
-        }
-        return prev - 1
-      })
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [examStarted, examCompleted])
-
-  // 当时间到0时自动提交
-  useEffect(() => {
-    if (timeRemaining === 0 && examStarted && !examCompleted) {
-      handleSubmitExam()
-    }
-  }, [timeRemaining, examStarted, examCompleted, handleSubmitExam])
-
   const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600)
     const minutes = Math.floor((seconds % 3600) / 60)
@@ -222,6 +204,29 @@ export function ProfessionalAdvancedExam({ examType, timeLimit = 120, onComplete
     setShowResults(true)
     onComplete?.(examResults)
   }, [timeLimit, timeRemaining, examQuestions, answers, onComplete])
+
+  // 计时器
+  useEffect(() => {
+    if (!examStarted || examCompleted) return
+
+    const timer = setInterval(() => {
+      setTimeRemaining((prev) => {
+        if (prev <= 1) {
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [examStarted, examCompleted])
+
+  // 当时间到0时自动提交
+  useEffect(() => {
+    if (timeRemaining === 0 && examStarted && !examCompleted) {
+      handleSubmitExam()
+    }
+  }, [timeRemaining, examStarted, examCompleted, handleSubmitExam])
 
   const currentQuestion = examQuestions[currentQuestionIndex]
 

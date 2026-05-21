@@ -1,13 +1,13 @@
 /**
- * @file workflow-manager.tsx
- * @description 工作流管理组件，提供工作流设计、执行和监控功能
+ * @fileoverview UI组件 · workflow-manager.tsx
  * @author YYC³ <admin@0379.email>
  * @version 1.0.0
+ * @license MIT
  */
 
 "use client";
 
-import { Play, Pause, Square, Plus, Trash2, Copy, Edit, ChevronRight, Clock, CheckCircle, AlertCircle, FolderOpen } from 'lucide-react';
+import { Play, Plus, Trash2, Copy, Edit, ChevronRight, Clock, FolderOpen } from 'lucide-react';
 import * as React from 'react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
@@ -84,12 +84,12 @@ interface WorkflowTemplateProps {
 export const WorkflowManager: React.FC<WorkflowManagerProps> = ({
   onWorkflowExecute,
   onWorkflowCreate,
-  onWorkflowUpdate,
+  onWorkflowUpdate: _onWorkflowUpdate,
   onWorkflowDelete
 }) => {
   const [workflows, setWorkflows] = useState<Workflow[]>([]);
-  const [selectedWorkflow, setSelectedWorkflow] = useState<Workflow | null>(null);
-  const [executions, setExecutions] = useState<Map<string, WorkflowExecution>>(new Map());
+  const [_selectedWorkflow, setSelectedWorkflow] = useState<Workflow | null>(null);
+  const [_executions, setExecutions] = useState<Map<string, WorkflowExecution>>(new Map());
   const [viewMode, setViewMode] = useState<'list' | 'editor' | 'templates'>('list');
   const [loading, setLoading] = useState(true);
 

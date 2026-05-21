@@ -55,7 +55,7 @@ class MessageStorageService {
   private readonly STORE_NAME = 'messages';
   private readonly SYNC_STORE_NAME = 'sync';
 
-  private constructor() {}
+  private constructor() { }
 
   public static getInstance(): MessageStorageService {
     if (!MessageStorageService.instance) {
@@ -117,7 +117,7 @@ class MessageStorageService {
     return new Promise((resolve, reject) => {
       const transaction = this.db!.transaction([this.STORE_NAME], 'readwrite');
       const store = transaction.objectStore(this.STORE_NAME);
-      
+
       messages.forEach((message) => {
         store.add(message);
       });
@@ -207,48 +207,49 @@ class MessageStorageService {
       const transaction = this.db!.transaction([this.STORE_NAME], 'readonly');
       const store = transaction.objectStore(this.STORE_NAME);
       const index = store.index('timestamp');
-      
+
       let messages: StoredMessage[] = [];
       let total = 0;
-      
+
       // 获取所有消息
       const getAllRequest = index.getAll();
-      
+
       getAllRequest.onsuccess = () => {
         let allMessages = getAllRequest.result as StoredMessage[];
-        
+
         // 应用筛选条件
-        if (options.filter) {
-          if (options.filter.role) {
-            allMessages = allMessages.filter(m => m.role === options.filter.role);
+        const filter = options.filter;
+        if (filter) {
+          if (filter.role) {
+            allMessages = allMessages.filter(m => m.role === filter.role);
           }
-          
-          if (options.filter.startDate) {
-            allMessages = allMessages.filter(m => m.timestamp >= options.filter.startDate!);
+
+          if (filter.startDate) {
+            allMessages = allMessages.filter(m => m.timestamp >= filter.startDate!);
           }
-          
-          if (options.filter.endDate) {
-            allMessages = allMessages.filter(m => m.timestamp <= options.filter.endDate!);
+
+          if (filter.endDate) {
+            allMessages = allMessages.filter(m => m.timestamp <= filter.endDate!);
           }
-          
-          if (options.filter.keyword) {
-            const keyword = options.filter.keyword.toLowerCase();
-            allMessages = allMessages.filter(m => 
+
+          if (filter.keyword) {
+            const keyword = filter.keyword.toLowerCase();
+            allMessages = allMessages.filter(m =>
               m.content.toLowerCase().includes(keyword)
             );
           }
         }
-        
+
         // 按时间戳降序排序
         allMessages.sort((a, b) => b.timestamp - a.timestamp);
-        
+
         total = allMessages.length;
-        
+
         // 分页
         const startIndex = (options.page - 1) * options.pageSize;
         const endIndex = startIndex + options.pageSize;
         messages = allMessages.slice(startIndex, endIndex);
-        
+
         resolve({
           data: messages,
           total,
@@ -257,7 +258,7 @@ class MessageStorageService {
           hasMore: endIndex < total
         });
       };
-      
+
       getAllRequest.onerror = () => reject(new Error('获取消息列表失败'));
     });
   }
@@ -271,21 +272,21 @@ class MessageStorageService {
       const transaction = this.db!.transaction([this.STORE_NAME], 'readonly');
       const store = transaction.objectStore(this.STORE_NAME);
       const index = store.index('timestamp');
-      
+
       const getAllRequest = index.getAll();
-      
+
       getAllRequest.onsuccess = () => {
         const allMessages = getAllRequest.result as StoredMessage[];
         const lowerKeyword = keyword.toLowerCase();
-        
+
         const filteredMessages = allMessages
           .filter(m => m.content.toLowerCase().includes(lowerKeyword))
           .sort((a, b) => b.timestamp - a.timestamp)
           .slice(0, limit);
-        
+
         resolve(filteredMessages);
       };
-      
+
       getAllRequest.onerror = () => reject(new Error('搜索消息失败'));
     });
   }
@@ -302,19 +303,19 @@ class MessageStorageService {
       const transaction = this.db!.transaction([this.STORE_NAME], 'readonly');
       const store = transaction.objectStore(this.STORE_NAME);
       const index = store.index('timestamp');
-      
+
       const getAllRequest = index.getAll();
-      
+
       getAllRequest.onsuccess = () => {
         const allMessages = getAllRequest.result as StoredMessage[];
-        
+
         const filteredMessages = allMessages
           .filter(m => m.timestamp >= startDate && m.timestamp <= endDate)
           .sort((a, b) => b.timestamp - a.timestamp);
-        
+
         resolve(filteredMessages);
       };
-      
+
       getAllRequest.onerror = () => reject(new Error('按时间范围获取消息失败'));
     });
   }
@@ -339,7 +340,7 @@ class MessageStorageService {
       await this.initialize();
     }
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       const transaction = this.db!.transaction([this.SYNC_STORE_NAME], 'readonly');
       const store = transaction.objectStore(this.SYNC_STORE_NAME);
       const request = store.get('lastSync');

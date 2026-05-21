@@ -1,0 +1,83 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: "20"
+  PNPM_VERSION: "9"
+
+jobs:
+  build:
+    name: Build Static Site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build for GitHub Pages (static export)
+        env:
+          NEXT_PUBLIC_APP_URL: https://learning.yyc3.top
+          NEXT_PUBLIC_API_URL: https://learning.yyc3.top/api
+          NODE_ENV: production
+        run: |
+          cp next.config.js next.config.js.bak
+          node -e "
+          const cfg = require('./next.config.js');
+          cfg.output = 'export';
+          cfg.images = cfg.images || {};
+          cfg.images.unoptimized = true;
+          delete cfg.rewrites;
+          delete cfg.redirects;
+          delete cfg.headers;
+          require('fs').writeFileSync('next.config.js', 'module.exports = ' + JSON.stringify(cfg, null, 2));
+          "
+          pnpm build
+          mv next.config.js.bak next.config.js
+
+      - name: Add CNAME
+        run: echo "learning.yyc3.top" > out/CNAME
+
+      - name: Add .nojekyll
+        run: touch out/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    name: Deploy to Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

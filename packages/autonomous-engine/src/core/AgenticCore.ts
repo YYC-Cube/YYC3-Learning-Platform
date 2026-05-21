@@ -4,8 +4,6 @@
  * 实现"五高五标五化"设计原则
  */
 import { EventEmitter } from 'events';
-import { ModelAdapter } from '@yyc3/model-adapter';
-import type { ModelConfig, ModelRequest, ModelResponse, TaskType } from '@yyc3/model-adapter';
 import type { TaskStatus } from '../IAutonomousAIEngine';
 
 // ModelAdapter相关配置接口

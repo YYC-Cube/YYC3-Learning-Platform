@@ -268,7 +268,7 @@ describe('Logger分支测试', () => {
       const originalEnv = process.env.NODE_ENV;
       process.env = { ...process.env, NODE_ENV: 'production' };
 
-      const prodLogger = new Logger();
+      const prodLogger = new Logger({ level: LogLevel.WARN });
 
       prodLogger.debug('debug');
       prodLogger.info('info');

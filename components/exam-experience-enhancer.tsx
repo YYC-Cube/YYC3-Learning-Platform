@@ -1,3 +1,9 @@
+/**
+ * @fileoverview UI组件 · exam-experience-enhancer.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { useState } from "react"
@@ -15,7 +21,7 @@ export function ExamExperienceEnhancer({ onThemeChange }: ExamExperienceEnhancer
   const [fontSize, setFontSize] = useState("normal")
 
   // 播放提示音
-  const playSound = (type: "success" | "warning" | "info") => {
+  const _playSound = (type: "success" | "warning" | "info") => {
     if (!soundEnabled) return
 
     // 使用Web Audio API创建简单提示音

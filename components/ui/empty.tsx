@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 空状态占位组件
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT */
+
 import { cva, type VariantProps } from 'class-variance-authority'
 
 import { cn } from '@/lib/utils'

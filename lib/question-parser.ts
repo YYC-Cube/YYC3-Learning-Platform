@@ -1,6 +1,8 @@
 /**
- * @file 题库解析工具
- * @description 从 Markdown 文件解析题目
+ * @fileoverview 工具函数/库 · question-parser.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
  */
 
 import { logger } from './logger'

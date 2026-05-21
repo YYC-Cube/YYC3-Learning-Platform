@@ -1,3 +1,9 @@
+/**
+ * @fileoverview 源代码文件 · not-found.tsx
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 "use client"
 
 import { Button } from "@/components/ui/button"

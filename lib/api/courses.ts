@@ -1,5 +1,11 @@
+/**
+ * @fileoverview 工具函数/库 · courses.ts
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
 export interface Course {
-  id: string
+  _id: string
   title: string
   description: string
   instructor: string
@@ -20,17 +26,17 @@ export async function getCourses(): Promise<Course[]> {
   return []
 }
 
-export async function getCourseById(id: string): Promise<Course | null> {
+export async function getCourseById(_id: string): Promise<Course | null> {
   // In production, this would fetch from an API
   return null
 }
 
-export async function enrollCourse(courseId: string, userId: string): Promise<boolean> {
+export async function enrollCourse(_courseId: string, _userId: string): Promise<boolean> {
   // In production, this would call an API
   return true
 }
 
-export async function getEnrolledCourses(userId: string): Promise<Course[]> {
+export async function getEnrolledCourses(_userId: string): Promise<Course[]> {
   // In production, this would fetch from an API
   return []
 }
