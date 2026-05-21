@@ -1,134 +1,75 @@
-/**
- * @fileoverview 全局错误边界组件
- * @description 捕获React应用中的JavaScript错误，记录错误信息并显示友好的错误界面
- * @author YYC³
- * @version 1.0.0
- * @created 2025-12-19
- * @modified 2025-12-19
- * @copyright Copyright (c) 2025 YYC³
- * @license MIT
- */
-
 'use client';
 
-import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { AlertTriangle, RefreshCcw } from 'lucide-react';
-import { logError } from '@/lib/error-handler.client';
-import { Toaster } from '@/components/ui/toaster';
+import { AlertTriangle, RefreshCw } from 'lucide-react';
+import * as React from 'react';
 
 interface ErrorBoundaryProps {
-  children: ReactNode;
-  fallback?: ReactNode;
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
 }
 
 interface ErrorBoundaryState {
   hasError: boolean;
-  error?: Error;
-  errorInfo?: ErrorInfo;
+  error: Error | null;
 }
 
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = {
-      hasError: false,
-    };
+    this.state = { hasError: false, error: null };
   }
 
   static getDerivedStateFromError(error: Error): ErrorBoundaryState {
-    return {
-      hasError: true,
-      error,
-    };
+    return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    this.setState({
-      errorInfo,
-    });
-
-    const errorMessage = error.message || '未知错误';
-
-    logError(errorMessage, error, {
-      context: 'ErrorBoundary',
-      componentStack: errorInfo.componentStack,
-    });
-
-    console.error('应用发生错误', errorMessage);
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('[ErrorBoundary]', error, errorInfo);
   }
 
-  private handleReset = (): void => {
-    this.setState({
-      hasError: false,
-      error: undefined,
-      errorInfo: undefined,
-    });
+  handleReload = () => {
     window.location.reload();
   };
 
-  render(): ReactNode {
+  handleGoBack = () => {
+    window.history.back();
+  };
+
+  render() {
     if (this.state.hasError) {
-      // 自定义回退界面
       if (this.props.fallback) {
         return this.props.fallback;
       }
-
-      // 默认错误界面
       return (
-        <div className="min-h-screen flex items-center justify-center p-4 bg-background">
-          <Card className="w-full max-w-md">
-            <CardHeader className="text-center">
-              <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-destructive/10">
-                <AlertTriangle className="h-6 w-6 text-destructive" />
-              </div>
-              <CardTitle className="text-2xl font-bold text-destructive">应用发生错误</CardTitle>
-            </CardHeader>
-            <CardContent className="text-center space-y-4">
-              <p className="text-muted-foreground">
-                {this.state.error?.message || '很抱歉，应用发生了意外错误。'}
-              </p>
-              <div className="space-y-2">
-                <Button onClick={this.handleReset} className="w-full" size="lg">
-                  <RefreshCcw className="mr-2 h-4 w-4" />
-                  重新加载应用
-                </Button>
-                <Button
-                  onClick={() => window.history.back()}
-                  variant="outline"
-                  className="w-full"
-                  size="lg"
-                >
-                  返回上一页
-                </Button>
-              </div>
-              {process.env.NODE_ENV === 'development' && this.state.error && (
-                <div className="mt-4 text-xs text-muted-foreground">
-                  <details className="cursor-pointer text-left">
-                    <summary className="font-medium">查看详细错误信息</summary>
-                    <pre className="mt-2 p-3 overflow-auto rounded bg-muted text-xs">
-                      {this.state.error.stack?.split('\n').map((line, index) => (
-                        <div key={index} className="whitespace-pre-wrap">
-                          {line}
-                        </div>
-                      ))}
-                    </pre>
-                  </details>
-                </div>
-              )}
-            </CardContent>
-          </Card>
+        <div className="flex flex-col items-center justify-center min-h-[400px] p-8 text-center">
+          <div className="w-16 h-16 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center mb-4">
+            <AlertTriangle className="w-8 h-8 text-red-600 dark:text-red-400" />
+          </div>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
+            应用发生错误
+          </h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mb-6 max-w-md">
+            {this.state.error?.message || '发生了未知错误，请稍后重试'}
+          </p>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={this.handleReload}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors"
+            >
+              <RefreshCw className="w-4 h-4" />
+              重新加载应用
+            </button>
+            <button
+              onClick={this.handleGoBack}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-medium hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              返回上一页
+            </button>
+          </div>
         </div>
       );
     }
 
-    // 正常渲染子组件和全局Toaster
-    return (
-      <>
-        {this.props.children}
-        <Toaster />
-      </>
-    );
+    return this.props.children;
   }
 }
