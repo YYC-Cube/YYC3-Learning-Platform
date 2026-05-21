@@ -11,10 +11,10 @@
 
 'use client';
 
-import Image from 'next/image';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
 import { useAIWidget } from '@/app/providers/AIWidgetContext';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface BrandHeaderProps {
   showSubtitle?: boolean;
@@ -53,7 +53,8 @@ function BrandHeader({ showSubtitle = true, size = 'md', className = '' }: Brand
   // 确定当前主题
   const currentTheme = theme === 'system' ? systemTheme : theme;
   // 根据主题选择 logo：深色主题用白色 logo，浅色主题用蓝色 logo
-  const logoSrc = mounted && currentTheme === 'dark' ? '/yyc3-white.png' : '/yyc3-logo-blue.png';
+  const isDark = mounted && currentTheme === 'dark';
+  const logoSrc = '/yyc3-blue/Web App/android-chrome-192.png';
 
   return (
     <div className={`flex flex-col items-center space-y-2 ${className}`}>
@@ -70,7 +71,7 @@ function BrandHeader({ showSubtitle = true, size = 'md', className = '' }: Brand
               alt="YanYu Smart Cloud³ Logo"
               width={size === 'lg' ? 64 : size === 'md' ? 40 : 32}
               height={size === 'lg' ? 64 : size === 'md' ? 40 : 32}
-              className={`${logoSizes[size]} object-contain`}
+              className={`${logoSizes[size]} object-contain ${isDark ? 'brightness-0 invert' : ''}`}
               priority={true}
             />
           </div>

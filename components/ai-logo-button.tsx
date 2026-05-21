@@ -6,10 +6,10 @@
  */
 'use client';
 
-import Image from 'next/image';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
 import { useAIWidget } from '@/app/providers/AIWidgetContext';
+import { useTheme } from 'next-themes';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 interface AILogobuttonProps {
   size?: 'sm' | 'md' | 'lg';
@@ -37,7 +37,8 @@ export function AILogobutton({ size = 'md' }: AILogobuttonProps) {
   };
 
   const currentTheme = theme === 'system' ? systemTheme : theme;
-  const logoSrc = mounted && currentTheme === 'dark' ? '/yyc3-white.png' : '/yyc3-logo-blue.png';
+  const isDark = mounted && currentTheme === 'dark';
+  const logoSrc = '/yyc3-blue/Web App/android-chrome-192.png';
 
   return (
     <button
@@ -51,7 +52,7 @@ export function AILogobutton({ size = 'md' }: AILogobuttonProps) {
         alt="YYC³ AI助手"
         width={logoWidth[size]}
         height={logoWidth[size]}
-        className={`${logoSizes[size]} object-contain`}
+        className={`${logoSizes[size]} object-contain ${isDark ? 'brightness-0 invert' : ''}`}
         priority={true}
       />
     </button>

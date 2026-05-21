@@ -8,17 +8,17 @@
  * @copyright Copyright (c) 2025 YYC³
  * @license MIT
  */
-import type { Metadata, Viewport } from 'next';
-import type { ReactNode } from 'react';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import { ThemeProvider } from '@/components/theme-provider';
-import { ErrorBoundary } from '@/components/ErrorBoundary';
 import {
-  BottomNav,
   AIAssistantProvider,
+  BottomNav,
   PerformanceMonitor,
 } from '@/app/providers/DynamicProviders';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { ThemeProvider } from '@/components/theme-provider';
+import type { Metadata, Viewport } from 'next';
+import { Inter } from 'next/font/google';
+import type { ReactNode } from 'react';
+import './globals.css';
 import './mobile-styles.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -33,10 +33,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico' },
-      { url: '/yyc3-dist/yanyu_cloud_16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/yyc3-dist/yanyu_cloud_32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/yyc3-blue/Web App/favicon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/yyc3-blue/Web App/favicon-32.png', sizes: '32x32', type: 'image/png' },
     ],
-    apple: [{ url: '/yyc3-dist/yanyu_cloud_192x192.png' }],
+    apple: [{ url: '/yyc3-blue/Web App/apple-touch-icon.png' }],
   },
   appleWebApp: {
     capable: true,

@@ -133,13 +133,12 @@ describe('BrandHeader', () => {
   });
 
   it('主题切换时Logo图片正确切换', () => {
-    // 测试浅色主题
+    const expectedSrc = '/yyc3-blue/Web App/android-chrome-192.png';
     renderBrandHeader();
     let logo = screen.getByAltText('YanYu Smart Cloud³ Logo');
-    expect(logo).toHaveAttribute('src', '/yyc3-logo-blue.png');
+    expect(logo).toHaveAttribute('src', expectedSrc);
     cleanup();
 
-    // 测试深色主题
     mockUseTheme.mockReturnValue({
       theme: 'dark',
       systemTheme: 'light',
@@ -148,10 +147,9 @@ describe('BrandHeader', () => {
     });
     renderBrandHeader();
     logo = screen.getByAltText('YanYu Smart Cloud³ Logo');
-    expect(logo).toHaveAttribute('src', '/yyc3-white.png');
+    expect(logo).toHaveAttribute('src', expectedSrc);
     cleanup();
 
-    // 测试系统主题（浅色）
     mockUseTheme.mockReturnValue({
       theme: 'system',
       systemTheme: 'light',
@@ -160,10 +158,9 @@ describe('BrandHeader', () => {
     });
     renderBrandHeader();
     logo = screen.getByAltText('YanYu Smart Cloud³ Logo');
-    expect(logo).toHaveAttribute('src', '/yyc3-logo-blue.png');
+    expect(logo).toHaveAttribute('src', expectedSrc);
     cleanup();
 
-    // 测试系统主题（深色）
     mockUseTheme.mockReturnValue({
       theme: 'system',
       systemTheme: 'dark',
@@ -172,6 +169,6 @@ describe('BrandHeader', () => {
     });
     renderBrandHeader();
     logo = screen.getByAltText('YanYu Smart Cloud³ Logo');
-    expect(logo).toHaveAttribute('src', '/yyc3-white.png');
+    expect(logo).toHaveAttribute('src', expectedSrc);
   });
 });
