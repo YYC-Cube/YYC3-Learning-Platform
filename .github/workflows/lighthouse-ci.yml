@@ -7,13 +7,13 @@ on:
   workflow_dispatch:
     inputs:
       urls:
-        description: "Comma-separated URLs to test"
+        description: 'Comma-separated URLs to test'
         required: false
-        default: "https://learning.yyc3.top"
+        default: 'https://learning.yyc3.top'
       budget_path:
-        description: "Path to performance budget file"
+        description: 'Path to performance budget file'
         required: false
-        default: "./performance-budgets.json"
+        default: './performance-budgets.json'
 
 permissions:
   contents: read
@@ -21,8 +21,8 @@ permissions:
   pull-requests: write
 
 env:
-  NODE_VERSION: "20"
-  PNPM_VERSION: "9"
+  NODE_VERSION: '20'
+  PNPM_VERSION: '9'
 
 jobs:
   # ===== Phase 1: Performance Testing =====

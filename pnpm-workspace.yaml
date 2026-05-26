@@ -1,4 +1,0 @@
-packages:
-  - "packages/*"
-  - "services/*"
-storeDir: .pnpm-store/v10
