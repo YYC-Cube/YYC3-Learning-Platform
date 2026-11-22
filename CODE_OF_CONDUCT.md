@@ -21,4 +21,4 @@
 
 ---
 
-> ***YanYuCloudCube*** · *言启象限 | 语枢未来*
+> **_YanYuCloudCube_** · _言启象限 | 语枢未来_
