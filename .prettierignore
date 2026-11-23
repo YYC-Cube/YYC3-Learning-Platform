@@ -11,3 +11,6 @@ build/
 *.min.css
 next-env.d.ts
 tsconfig.tsbuildinfo
+
+# Mimosa hook runtime state (session tooling)
+.mimosa/
