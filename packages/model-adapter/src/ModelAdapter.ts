@@ -40,6 +40,14 @@ class EventEmitter {
   }
 }
 
+// WebCrypto 标准算法名映射（'SHA256' 等 Node 风格名需转为带连字符的 WebCrypto 名）
+const WEB_CRYPTO_DIGEST: Record<string, string> = {
+  SHA1: 'SHA-1',
+  SHA256: 'SHA-256',
+  SHA384: 'SHA-384',
+  SHA512: 'SHA-512',
+};
+
 // 替代Node.js的crypto模块，使用Web Crypto API
 const createHash = (algorithm: string) => {
   return {
@@ -48,7 +56,9 @@ const createHash = (algorithm: string) => {
         digest: async (encoding: string) => {
           const encoder = new TextEncoder();
           const dataBuffer = encoder.encode(data);
-          const hashBuffer = await crypto.subtle.digest(algorithm.toUpperCase(), dataBuffer);
+          const algoKey = algorithm.toUpperCase();
+          const webCryptoName = WEB_CRYPTO_DIGEST[algoKey] ?? algoKey;
+          const hashBuffer = await crypto.subtle.digest(webCryptoName, dataBuffer);
           const hashArray = Array.from(new Uint8Array(hashBuffer));
           return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
         },

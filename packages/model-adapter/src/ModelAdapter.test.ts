@@ -166,7 +166,7 @@ describe('ModelAdapter', () => {
     it('should initialize with valid configuration', async () => {
       const config = generateTestConfig();
 
-      await expect(modelAdapter.initialize(config)).resolves.not.toThrow();
+      await expect(modelAdapter.initialize(config)).resolves.toBeUndefined();
       expect(modelAdapter.status).toBe('active');
     });
 
@@ -187,7 +187,7 @@ describe('ModelAdapter', () => {
         fallbackModel: '', // Invalid fallback model to trigger failure
       });
 
-      await expect(modelAdapter.initialize(config)).resolves.not.toThrow();
+      await expect(modelAdapter.initialize(config)).resolves.toBeUndefined();
     });
   });
 
@@ -207,7 +207,7 @@ describe('ModelAdapter', () => {
 
       jest.spyOn(modelAdapter as any, 'createProvider').mockReturnValue(mockProvider);
 
-      await expect(modelAdapter.addModel(config)).resolves.not.toThrow();
+      await expect(modelAdapter.addModel(config)).resolves.toBeUndefined();
       expect(modelAdapter.getModel('gpt-4')).toEqual(config);
     });
 
@@ -250,7 +250,7 @@ describe('ModelAdapter', () => {
     });
 
     it('should remove a model successfully', async () => {
-      await expect(modelAdapter.removeModel('gpt-4')).resolves.not.toThrow();
+      await expect(modelAdapter.removeModel('gpt-4')).resolves.toBeUndefined();
       expect(modelAdapter.getModel('gpt-4')).toBeUndefined();
     });
 
@@ -288,7 +288,7 @@ describe('ModelAdapter', () => {
         temperature: 0.8,
       };
 
-      await expect(modelAdapter.updateModel('gpt-4', updates)).resolves.not.toThrow();
+      await expect(modelAdapter.updateModel('gpt-4', updates)).resolves.toBeUndefined();
 
       const updatedModel = modelAdapter.getModel('gpt-4');
       expect(updatedModel?.maxTokens).toBe(2000);
@@ -489,7 +489,7 @@ describe('ModelAdapter', () => {
     it('should clear cache successfully', async () => {
       await modelAdapter.initialize(generateTestConfig());
 
-      await expect(modelAdapter.clearCache()).resolves.not.toThrow();
+      await expect(modelAdapter.clearCache()).resolves.toBeUndefined();
     });
   });
 
@@ -507,14 +507,14 @@ describe('ModelAdapter', () => {
     it('should start the adapter successfully', async () => {
       await modelAdapter.initialize(generateTestConfig());
 
-      await expect(modelAdapter.start()).resolves.not.toThrow();
+      await expect(modelAdapter.start()).resolves.toBeUndefined();
     });
 
     it('should stop the adapter successfully', async () => {
       await modelAdapter.initialize(generateTestConfig());
 
       await modelAdapter.start();
-      await expect(modelAdapter.stop()).resolves.not.toThrow();
+      await expect(modelAdapter.stop()).resolves.toBeUndefined();
       expect(modelAdapter.status).toBe('suspended');
     });
 
@@ -522,7 +522,7 @@ describe('ModelAdapter', () => {
       await modelAdapter.initialize(generateTestConfig());
 
       await modelAdapter.start();
-      await expect(modelAdapter.restart()).resolves.not.toThrow();
+      await expect(modelAdapter.restart()).resolves.toBeUndefined();
       expect(modelAdapter.status).toBe('active');
     });
   });
