@@ -27,7 +27,7 @@ describe('Wave-13 — index.ts 公共导出面冒烟（istanbul 全口径点亮�
     expect(new PublicAPI.ModelAdapter()).toBeDefined();
     expect(new PublicAPI.OpenAIProvider()).toBeDefined();
     expect(new PublicAPI.GoogleProvider()).toBeDefined();
-    expect(PublicAPI.VERSION).toBe('1.0.0');
+    expect(PublicAPI.VERSION).toBe('1.1.0');
     expect(PublicAPI.DEFAULT_MODEL_ADAPTER_CONFIG.defaultModel).toBe('gpt-4');
     expect(PublicAPI.MODEL_PRESETS.openai.gpt4.model).toBe('gpt-4');
     expect(PublicAPI.MODEL_PRESETS.anthropic.claude3.model).toContain('claude');
