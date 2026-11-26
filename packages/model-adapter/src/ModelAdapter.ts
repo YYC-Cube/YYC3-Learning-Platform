@@ -1277,6 +1277,11 @@ class OpenAIProvider implements IModelProvider {
       const openaiResponse = await this.client.chat.completions.create(openaiRequest);
       const endTime = Date.now();
 
+      // 防御：空 choices 的异常响应直接拒绝（避免静默产出空内容响应）
+      if (!openaiResponse.choices || openaiResponse.choices.length === 0) {
+        throw new Error(`OpenAI response has no choices (model: ${openaiResponse.model || 'unknown'})`);
+      }
+
       // Map OpenAI response to ModelResponse
       return this.mapOpenAIResponse(
         openaiResponse as OpenAI.Chat.ChatCompletion,
