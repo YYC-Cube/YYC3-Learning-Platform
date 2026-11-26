@@ -29,7 +29,8 @@
     "clean": "rm -rf ./dist",
     "prepublishOnly": "npm run clean && npm run build && npm run test",
     "docs": "typedoc ./src --out ./docs --excludePrivate",
-    "bench": "node ./benchmarks/index.js"
+    "bench": "node ./benchmarks/index.js",
+    "test:coverage:fullscope": "vitest run --coverage"
   },
   "keywords": [
     "yyc3",
@@ -81,13 +82,15 @@
     "@types/node": "^20.10.5",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
+    "@vitest/coverage-istanbul": "5.1.0",
     "bun-types": "latest",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "prettier": "^3.1.1",
     "typedoc": "^0.25.7",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitest": "5.1.0"
   },
   "peerDependencies": {
     "typescript": ">=5.0.0"
