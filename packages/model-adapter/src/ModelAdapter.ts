@@ -1278,17 +1278,13 @@ class OpenAIProvider implements IModelProvider {
       const endTime = Date.now();
 
       // 防御：空 choices 的异常响应直接拒绝（避免静默产出空内容响应）
-      if (!openaiResponse.choices || openaiResponse.choices.length === 0) {
-        throw new Error(`OpenAI response has no choices (model: ${openaiResponse.model || 'unknown'})`);
+      const completion = openaiResponse as OpenAI.Chat.ChatCompletion;
+      if (!completion.choices || completion.choices.length === 0) {
+        throw new Error(`OpenAI response has no choices (model: ${completion.model || 'unknown'})`);
       }
 
       // Map OpenAI response to ModelResponse
-      return this.mapOpenAIResponse(
-        openaiResponse as OpenAI.Chat.ChatCompletion,
-        request,
-        startTime,
-        endTime
-      );
+      return this.mapOpenAIResponse(completion, request, startTime, endTime);
     } catch (error) {
       logger.error('OpenAI API request failed:', error);
       throw error;

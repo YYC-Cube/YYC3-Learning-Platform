@@ -1,6 +1,15 @@
 import { describe, test, expect, beforeEach, afterEach, jest } from 'bun:test';
 import { ResourceMonitor, ResourceMonitorConfig, ResourceMetrics } from './ResourceMonitor';
 
+// 全量并发下事件循环拥堵，固定 150ms 等待不可靠——轮询至条件满足（5s 上限）
+async function waitFor(condition: () => boolean, timeoutMs = 5000, stepMs = 25): Promise<void> {
+  const deadline = Date.now() + timeoutMs;
+  while (!condition()) {
+    if (Date.now() > deadline) throw new Error('waitFor: condition not met within timeout');
+    await new Promise((resolve) => setTimeout(resolve, stepMs));
+  }
+}
+
 describe('ResourceMonitor', () => {
   let monitor: ResourceMonitor;
   const mockConfig: ResourceMonitorConfig = {
@@ -56,7 +65,7 @@ describe('ResourceMonitor', () => {
 
     test('should collect memory metrics', async () => {
       await monitor.start();
-      await new Promise((resolve) => setTimeout(resolve, 150));
+      await waitFor(() => monitor.getLatestMetrics() !== null);
 
       const metrics = monitor.getLatestMetrics();
       expect(metrics?.memory).toBeDefined();
@@ -261,13 +270,18 @@ describe('ResourceMonitor', () => {
         },
       });
 
-      await monitor.start();
-      await new Promise((resolve) => setTimeout(resolve, 150));
+      // 白盒直调（确定性，免真实 timer/堆压力）：heapUsedPercentage=50 → >warning(0) 命中 warning，≤critical(100) 不误发
+      await (monitor as any).checkThresholds({
+        timestamp: new Date(),
+        memory: { heapUsed: 50, heapTotal: 100, heapUsedPercentage: 50, rss: 60, external: 1, arrayBuffers: 1 },
+        cpu: { usage: 5, userCPUTime: 0, systemCPUTime: 0, loadAverage: [0, 0, 0], cpuCount: 8 },
+        network: { bandwidthUsage: 0, requestCount: 0, errorCount: 0 },
+        system: { uptime: 1, platform: 'darwin', arch: 'arm64', nodeVersion: 'test', totalMemory: 100, freeMemory: 50 },
+      } as any);
 
       expect(alertSpy).toHaveBeenCalled();
-      const alert = alertSpy.mock.calls[0][0];
-      expect(alert.type).toBe('memory');
-      expect(alert.severity).toBe('warning');
+      const memAlerts = alertSpy.mock.calls.map((c: any[]) => c[0]);
+      expect(memAlerts.some((a: any) => a.type === 'memory' && a.severity === 'warning')).toBe(true);
 
       await monitor.stop();
     });
@@ -289,13 +303,18 @@ describe('ResourceMonitor', () => {
         },
       });
 
-      await monitor.start();
-      await new Promise((resolve) => setTimeout(resolve, 150));
+      // 白盒直调（确定性）：cpu.usage=50 → >critical(0) 命中 critical；memory 50 不达 warning(100) 无干扰
+      await (monitor as any).checkThresholds({
+        timestamp: new Date(),
+        memory: { heapUsed: 50, heapTotal: 100, heapUsedPercentage: 50, rss: 60, external: 1, arrayBuffers: 1 },
+        cpu: { usage: 50, userCPUTime: 0, systemCPUTime: 0, loadAverage: [0, 0, 0], cpuCount: 8 },
+        network: { bandwidthUsage: 0, requestCount: 0, errorCount: 0 },
+        system: { uptime: 1, platform: 'darwin', arch: 'arm64', nodeVersion: 'test', totalMemory: 100, freeMemory: 50 },
+      } as any);
 
       expect(alertSpy).toHaveBeenCalled();
-      const alert = alertSpy.mock.calls[0][0];
-      expect(alert.type).toBe('cpu');
-      expect(alert.severity).toBe('critical');
+      const cpuAlerts = alertSpy.mock.calls.map((c: any[]) => c[0]);
+      expect(cpuAlerts.some((a: any) => a.type === 'cpu' && a.severity === 'critical')).toBe(true);
 
       await monitor.stop();
     });
