@@ -188,6 +188,7 @@ class OptimizedLRUCache extends EventEmitter {
     }
 
     if (node.metadata.expiresAt && node.metadata.expiresAt < new Date()) {
+      this.cache.delete(key);
       this.deleteNode(node);
       this.misses++;
       this.recordLatency(Date.now() - startTime);
@@ -233,6 +234,7 @@ class OptimizedLRUCache extends EventEmitter {
   async delete(key: string): Promise<void> {
     const node = this.cache.get(key);
     if (node) {
+      this.cache.delete(key); // fix(wave-13): deleteNode 只摘链表不删 Map——幽灵节点致 delete/invalidate 失效
       this.deleteNode(node);
     }
   }
