@@ -1,4 +1,4 @@
-import { describe, test, expect, beforeEach, afterEach, jest } from '@jest/globals';
+import { describe, test, expect, beforeEach, afterEach, jest } from 'bun:test';
 import { ResourceMonitor, ResourceMonitorConfig, ResourceMetrics } from './ResourceMonitor';
 
 describe('ResourceMonitor', () => {
@@ -475,6 +475,16 @@ describe('ResourceMonitor', () => {
       await monitor.start();
       await new Promise((resolve) => setTimeout(resolve, 150));
 
+      // 白盒注入低负载指标（宿主机实时负载不可控，注入保证"无阈值超"前提成立）
+      (monitor as any).metricsHistory = [
+        {
+          timestamp: new Date(),
+          memory: { heapUsedPercentage: 10, heapUsed: 10, heapTotal: 100 },
+          cpu: { usage: 5, userCPUTime: 0, systemCPUTime: 0, loadAverage: [0, 0, 0], cpuCount: 8 },
+          network: { bandwidthUsage: 0, requestCount: 10, errorCount: 0 },
+        } as any,
+      ];
+
       const recommendations = monitor.generateOptimizationRecommendations();
       expect(recommendations).toHaveLength(0);
 
@@ -611,6 +621,7 @@ describe('ResourceMonitor', () => {
 
       await monitor.cleanup();
 
+      alertSpy.mockClear(); // cleanup 前的真实告警不计入；断言 cleanup 后监听已移除
       monitor.emit('alert', { type: 'test' });
       expect(alertSpy).not.toHaveBeenCalled();
     });

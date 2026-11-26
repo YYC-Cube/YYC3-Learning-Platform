@@ -635,7 +635,8 @@ export class ResourceMonitor extends EventEmitter {
     cpu: 'increasing' | 'decreasing' | 'stable';
     network: 'increasing' | 'decreasing' | 'stable';
   } {
-    if (this.metricsHistory.length < 2) {
+    // 样本不足 3 条时趋势不可信（噪声主导），返回 stable
+    if (this.metricsHistory.length < 3) {
       return {
         memory: 'stable',
         cpu: 'stable',
