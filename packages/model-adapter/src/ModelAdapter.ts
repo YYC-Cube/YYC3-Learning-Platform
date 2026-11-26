@@ -1098,7 +1098,7 @@ class SmartModelRouter implements IModelRouter {
   }
 }
 
-class ModelCache implements IModelCache {
+export class ModelCache implements IModelCache {
   private cache = new Map<string, { response: ModelResponse; expires: number }>();
   private config?: any;
 
