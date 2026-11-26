@@ -1,6 +1,6 @@
 {
   "name": "@yyc3/model-adapter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "YYC³ Intelligent Model Adapter - Smart multi-model routing and management system",
   "type": "module",
   "main": "./dist/index.js",
