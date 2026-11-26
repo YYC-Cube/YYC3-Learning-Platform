@@ -504,6 +504,9 @@ class L1MemoryCache extends EventEmitter {
   private cache: Map<string, any>;
   private metadata: Map<string, CacheMetadata>;
   private config: any;
+  private hits = 0;
+  private misses = 0;
+  private evictions = 0;
 
   constructor(config: any) {
     super();
@@ -517,15 +520,18 @@ class L1MemoryCache extends EventEmitter {
     const metadata = this.metadata.get(key);
 
     if (!value || !metadata) {
+      this.misses++;
       return { hit: false, value: null, metadata: {} };
     }
 
     if (metadata.expiresAt && metadata.expiresAt < new Date()) {
       this.cache.delete(key);
       this.metadata.delete(key);
+      this.misses++;
       return { hit: false, value: null, metadata: {} };
     }
 
+    this.hits++;
     metadata.accessCount = (metadata.accessCount || 0) + 1;
     metadata.lastAccessedAt = new Date();
     this.metadata.set(key, metadata);
@@ -553,14 +559,15 @@ class L1MemoryCache extends EventEmitter {
   }
 
   async getStats(): Promise<CacheStats> {
+    const total = this.hits + this.misses;
     return {
       level: CacheLevel.L1,
-      hits: 0,
-      misses: 0,
-      hitRate: 0,
+      hits: this.hits,
+      misses: this.misses,
+      hitRate: total > 0 ? this.hits / total : 0,
       size: this.cache.size,
       maxSize: this.config.maxSize,
-      evictions: 0,
+      evictions: this.evictions,
       avgLatency: 0,
       memoryUsage: this.calculateMemoryUsage(),
     };
@@ -573,11 +580,13 @@ class L1MemoryCache extends EventEmitter {
 
   private evictLRU(): void {
     let oldestKey: string | null = null;
-    let oldestTime = Date.now();
+    let oldestTime = Infinity;
 
     for (const [key, metadata] of this.metadata.entries()) {
-      if (metadata.lastAccessedAt && metadata.lastAccessedAt.getTime() < oldestTime) {
-        oldestTime = metadata.lastAccessedAt.getTime();
+      // 无 lastAccessedAt 的条目视为最旧（插入序兜底），优先逐出
+      const accessed = metadata.lastAccessedAt ? metadata.lastAccessedAt.getTime() : -1;
+      if (accessed < oldestTime) {
+        oldestTime = accessed;
         oldestKey = key;
       }
     }
@@ -585,6 +594,7 @@ class L1MemoryCache extends EventEmitter {
     if (oldestKey) {
       this.cache.delete(oldestKey);
       this.metadata.delete(oldestKey);
+      this.evictions++;
     }
   }
 
