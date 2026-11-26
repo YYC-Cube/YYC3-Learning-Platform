@@ -1217,12 +1217,14 @@ class OpenAIProvider implements IModelProvider {
       }
 
       // Create OpenAI client
+      // fetch 委托 globalThis.fetch（call-time 查找）——使测试 spy 可注入且始终跟随运行时环境
       this.client = new OpenAI({
         apiKey: config.credentials.apiKey,
         baseURL: config.credentials.baseURL,
         organization: config.credentials.organization,
         timeout: config.credentials.timeout || 30000,
         defaultHeaders: config.credentials.additionalHeaders,
+        fetch: (...args) => globalThis.fetch(...(args as [RequestInfo, RequestInit?])),
       });
     } catch (error) {
       logger.error('Failed to initialize OpenAIProvider:', error);
