@@ -245,7 +245,7 @@ describe('ResourceMonitor', () => {
 
   describe('Alerts', () => {
     test('should emit alert when memory exceeds warning threshold', async () => {
-      const alertSpy = vi.fn();
+      const alertSpy = jest.fn();
       monitor.on('alert', alertSpy);
 
       monitor.updateConfig({
@@ -273,7 +273,7 @@ describe('ResourceMonitor', () => {
     });
 
     test('should emit alert when CPU exceeds critical threshold', async () => {
-      const alertSpy = vi.fn();
+      const alertSpy = jest.fn();
       monitor.on('alert', alertSpy);
 
       monitor.updateConfig({
@@ -333,7 +333,7 @@ describe('ResourceMonitor', () => {
     });
 
     test('should emit alert when network error rate is high', async () => {
-      const alertSpy = vi.fn();
+      const alertSpy = jest.fn();
       monitor.on('alert', alertSpy);
 
       monitor.updateConfig({
@@ -603,7 +603,7 @@ describe('ResourceMonitor', () => {
     });
 
     test('should remove all event listeners on cleanup', async () => {
-      const alertSpy = vi.fn();
+      const alertSpy = jest.fn();
       monitor.on('alert', alertSpy);
 
       await monitor.start();
@@ -618,7 +618,7 @@ describe('ResourceMonitor', () => {
 
   describe('Events', () => {
     test('should emit metrics:collected event', async () => {
-      const metricsSpy = vi.fn();
+      const metricsSpy = jest.fn();
       monitor.on('metrics:collected', metricsSpy);
 
       await monitor.start();

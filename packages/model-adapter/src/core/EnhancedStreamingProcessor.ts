@@ -283,7 +283,10 @@ export class EnhancedStreamingProcessor extends EventEmitter {
       requestId: request.id,
       prompt: request.prompt,
       timestamp: Date.now(),
-      priority: request.metadata?.priority === 'low' || request.metadata?.priority === 'high' ? request.metadata.priority : 'normal',
+      priority:
+        request.metadata?.priority === 'low' || request.metadata?.priority === 'high'
+          ? request.metadata.priority
+          : 'normal',
     };
 
     this.prefetchQueue.set(request.id, context);
