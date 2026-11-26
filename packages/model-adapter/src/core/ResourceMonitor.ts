@@ -412,7 +412,7 @@ export class ResourceMonitor extends EventEmitter {
       memory: this.averageMemoryMetrics(relevantMetrics),
       cpu: this.averageCPUMetrics(relevantMetrics),
       network: this.averageNetworkMetrics(relevantMetrics),
-      system: relevantMetrics[relevantMetrics.length - 1].system,
+      system: relevantMetrics[relevantMetrics.length - 1]!.system,
     };
   }
 
@@ -464,7 +464,7 @@ export class ResourceMonitor extends EventEmitter {
     );
 
     const count = metrics.length;
-    const latestMetrics = metrics[metrics.length - 1];
+    const latestMetrics = metrics[metrics.length - 1]!;
 
     return {
       usage: sum.usage / count,
@@ -497,7 +497,7 @@ export class ResourceMonitor extends EventEmitter {
     );
 
     const count = metrics.length;
-    const latestMetrics = metrics[metrics.length - 1];
+    const latestMetrics = metrics[metrics.length - 1]!;
 
     return {
       bytesReceived: sum.bytesReceived / count,
@@ -644,8 +644,8 @@ export class ResourceMonitor extends EventEmitter {
     }
 
     const recentMetrics = this.metricsHistory.slice(-10);
-    const firstMetrics = recentMetrics[0];
-    const lastMetrics = recentMetrics[recentMetrics.length - 1];
+    const firstMetrics = recentMetrics[0]!;
+    const lastMetrics = recentMetrics[recentMetrics.length - 1]!;
 
     const memoryTrend =
       lastMetrics.memory.heapUsedPercentage - firstMetrics.memory.heapUsedPercentage;

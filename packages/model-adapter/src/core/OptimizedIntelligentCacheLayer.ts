@@ -331,7 +331,7 @@ class OptimizedLRUCache extends EventEmitter {
   private getPercentile(sortedArray: number[], percentile: number): number {
     if (sortedArray.length === 0) return 0;
     const index = Math.ceil((percentile / 100) * sortedArray.length) - 1;
-    return sortedArray[Math.max(0, index)];
+    return sortedArray[Math.max(0, index)] ?? 0;
   }
 
   private calculateMemoryUsage(): number {
@@ -526,7 +526,7 @@ class OptimizedLFUCache extends EventEmitter {
   private getPercentile(sortedArray: number[], percentile: number): number {
     if (sortedArray.length === 0) return 0;
     const index = Math.ceil((percentile / 100) * sortedArray.length) - 1;
-    return sortedArray[Math.max(0, index)];
+    return sortedArray[Math.max(0, index)] ?? 0;
   }
 
   private calculateMemoryUsage(): number {
@@ -539,10 +539,10 @@ class OptimizedLFUCache extends EventEmitter {
 }
 
 export class OptimizedIntelligentCacheLayer extends EventEmitter {
-  private l1Cache: OptimizedLRUCache;
-  private l2Cache: OptimizedLFUCache;
-  private l3Cache: OptimizedLRUCache;
-  private l4Cache: OptimizedLRUCache;
+  private l1Cache!: OptimizedLRUCache;
+  private l2Cache!: OptimizedLFUCache;
+  private l3Cache!: OptimizedLRUCache;
+  private l4Cache!: OptimizedLRUCache;
   private config: CacheConfig;
   private batchOperations: Map<string, Promise<any>>;
 
@@ -648,7 +648,8 @@ export class OptimizedIntelligentCacheLayer extends EventEmitter {
         hit: false,
         source: 'none',
         metadata: {
-          missTime: Date.now() - startTime,
+          loadTime: Date.now() - startTime,
+          size: 0,
           timestamp: new Date(),
         },
       };
@@ -761,8 +762,11 @@ export class OptimizedIntelligentCacheLayer extends EventEmitter {
   }
 
   async warmup(patterns: WarmupPattern[]): Promise<WarmupReport> {
+    const start = new Date();
     const report: WarmupReport = {
-      startTime: new Date(),
+      startTime: start,
+      endTime: start,
+      totalDuration: 0,
       patterns: [],
       results: {},
     };
@@ -814,7 +818,8 @@ export class OptimizedIntelligentCacheLayer extends EventEmitter {
   }
 
   async analyzePerformance(): Promise<CachePerformanceReport> {
-    const stats = await this.getStats();
+    const stats = (await this.getStats()) ?? [];
+    const l1 = stats[0];
     const totalHits = stats.reduce((sum, s) => sum + s.hits, 0);
     const totalMisses = stats.reduce((sum, s) => sum + s.misses, 0);
     const totalRequests = totalHits + totalMisses;
@@ -823,12 +828,12 @@ export class OptimizedIntelligentCacheLayer extends EventEmitter {
     const bottlenecks: any[] = [];
     const recommendations: any[] = [];
 
-    if (stats[0].hitRate < 0.8) {
+    if (l1 && l1.hitRate < 0.8) {
       bottlenecks.push({
         level: 'L1',
         issue: 'Low hit rate',
         severity: 'high',
-        currentValue: stats[0].hitRate,
+        currentValue: l1.hitRate,
         targetValue: 0.8,
       });
       recommendations.push({
@@ -839,12 +844,12 @@ export class OptimizedIntelligentCacheLayer extends EventEmitter {
       });
     }
 
-    if (stats[0].avgLatency > 10) {
+    if (l1 && l1.avgLatency > 10) {
       bottlenecks.push({
         level: 'L1',
         issue: 'High latency',
         severity: 'medium',
-        currentValue: stats[0].avgLatency,
+        currentValue: l1.avgLatency,
         targetValue: 10,
       });
       recommendations.push({
@@ -869,7 +874,7 @@ export class OptimizedIntelligentCacheLayer extends EventEmitter {
       recommendations,
       forecast: {
         projectedHitRate: hitRate * 1.1,
-        projectedLatency: stats[0].avgLatency * 0.9,
+        projectedLatency: (l1?.avgLatency ?? 0) * 0.9,
       },
       healthScore: hitRate * 100,
     };

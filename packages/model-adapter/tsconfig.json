@@ -21,7 +21,7 @@
     "noPropertyAccessFromIndexSignature": false,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
+    "exactOptionalPropertyTypes": false,
     "noImplicitThis": true,
     "alwaysStrict": true,
     "skipLibCheck": true,
@@ -56,7 +56,8 @@
     "**/*.spec.tsx",
     "coverage",
     "benchmarks",
-    "docs"
+    "docs",
+    "../../lib/**"
   ],
   "ts-node": {
     "esm": true,

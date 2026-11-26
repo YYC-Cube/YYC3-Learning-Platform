@@ -101,7 +101,7 @@ import {
 
 import { EnhancedStreamingProcessor, StreamingConfig } from './core/EnhancedStreamingProcessor';
 import { IntelligentCacheLayer, CacheConfig, CacheStrategy } from './core/IntelligentCacheLayer';
-import { createLogger } from '../../../lib/logger';
+import { createLogger } from './lib/logger';
 
 const logger = createLogger('ModelAdapter');
 

@@ -283,7 +283,7 @@ export class EnhancedStreamingProcessor extends EventEmitter {
       requestId: request.id,
       prompt: request.prompt,
       timestamp: Date.now(),
-      priority: request.metadata?.priority || 'normal',
+      priority: request.metadata?.priority === 'low' || request.metadata?.priority === 'high' ? request.metadata.priority : 'normal',
     };
 
     this.prefetchQueue.set(request.id, context);
@@ -324,9 +324,9 @@ export class EnhancedStreamingProcessor extends EventEmitter {
         this.latencyHistory.reduce((a, b) => a + b, 0) / this.latencyHistory.length;
 
       const sorted = [...this.latencyHistory].sort((a, b) => a - b);
-      this.metrics.p50Latency = sorted[Math.floor(sorted.length * 0.5)];
-      this.metrics.p95Latency = sorted[Math.floor(sorted.length * 0.95)];
-      this.metrics.p99Latency = sorted[Math.floor(sorted.length * 0.99)];
+      this.metrics.p50Latency = sorted[Math.floor(sorted.length * 0.5)] ?? 0;
+      this.metrics.p95Latency = sorted[Math.floor(sorted.length * 0.95)] ?? 0;
+      this.metrics.p99Latency = sorted[Math.floor(sorted.length * 0.99)] ?? 0;
     }
 
     if (this.metrics.totalStreams > 0) {
