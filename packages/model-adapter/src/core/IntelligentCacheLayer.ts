@@ -142,10 +142,10 @@ export interface CachePerformanceReport {
 }
 
 export class IntelligentCacheLayer extends EventEmitter {
-  private l1Cache: L1MemoryCache;
-  private l2Cache: L2SharedCache;
-  private l3Cache: L3PersistentCache;
-  private l4Cache: L4RemoteCache;
+  private l1Cache!: L1MemoryCache;
+  private l2Cache!: L2SharedCache;
+  private l3Cache!: L3PersistentCache;
+  private l4Cache!: L4RemoteCache;
   private config: CacheConfig;
 
   constructor(config: CacheConfig = {}) {
@@ -249,7 +249,8 @@ export class IntelligentCacheLayer extends EventEmitter {
         hit: false,
         source: 'none',
         metadata: {
-          missTime: Date.now() - startTime,
+          loadTime: Date.now() - startTime,
+          size: 0,
           timestamp: new Date(),
         },
       };
@@ -335,8 +336,11 @@ export class IntelligentCacheLayer extends EventEmitter {
   }
 
   async warmup(patterns: WarmupPattern[]): Promise<WarmupReport> {
+    const start = new Date();
     const report: WarmupReport = {
-      startTime: new Date(),
+      startTime: start,
+      endTime: start,
+      totalDuration: 0,
       patterns: [],
       results: {},
     };

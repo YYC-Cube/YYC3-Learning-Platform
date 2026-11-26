@@ -177,7 +177,7 @@ export { GoogleProvider };
 export { IntelligentCacheLayer };
 export { EnhancedStreamingProcessor };
 
-// Re-export cache types
+// Re-export cache types（CacheConfig/CacheStats 以 IModelAdapter 版为准，此处不重复导出）
 export type {
   CacheLevel,
   CacheStrategy,
@@ -185,23 +185,20 @@ export type {
   CacheResult,
   CacheGetOptions,
   CacheSetOptions,
-  CacheStats,
   WarmupPattern,
   WarmupReport,
   EvictionResult,
   ConsistencyCheck,
-  CacheConfig,
   CachePerformanceReport,
-};
+} from './core/IntelligentCacheLayer';
 
-// Re-export streaming types
+// Re-export streaming types（StreamPerformanceReport 未在源模块定义，移除）
 export type {
   StreamingConfig,
   StreamingMetrics,
   StreamBuffer,
   PrefetchContext,
-  StreamPerformanceReport,
-};
+} from './core/EnhancedStreamingProcessor';
 
 // Package version
 export const VERSION = '1.0.0';

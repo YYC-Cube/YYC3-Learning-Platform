@@ -1,0 +1,93 @@
+/**
+ * @fileoverview 日志工具模块（包内化副本，源：仓根 lib/logger.ts）
+ * @description 提供统一的应用日志记录功能，支持多级别日志输出
+ * @author YYC³ <admin@0379.email>
+ * @version 1.0.0
+ * @license MIT
+ */
+export enum LogLevel {
+  DEBUG = 0,
+  INFO = 1,
+  WARN = 2,
+  ERROR = 3,
+}
+
+export interface LoggerConfig {
+  level: LogLevel;
+  enableTimestamp: boolean;
+  context?: string;
+}
+
+export class Logger {
+  private config: LoggerConfig;
+
+  constructor(config?: Partial<LoggerConfig>) {
+    // Edge Runtime 和客户端安全的环境检测
+    // 完全避免使用任何 Node.js API
+    this.config = {
+      level: LogLevel.INFO, // 默认INFO级别，避免环境检测问题
+      enableTimestamp: true,
+      ...config,
+    };
+  }
+
+  private formatMessage(level: string, message: string, data?: any): string {
+    const timestamp = this.config.enableTimestamp ? `[${new Date().toISOString()}] ` : '';
+    const context = this.config.context ? `[${this.config.context}] ` : '';
+    const dataStr = data ? ` ${JSON.stringify(data)}` : '';
+
+    return `${timestamp}${context}${level}: ${message}${dataStr}`;
+  }
+
+  private shouldLog(level: LogLevel): boolean {
+    return level >= this.config.level;
+  }
+
+  debug(message: string, data?: any): void {
+    if (this.shouldLog(LogLevel.DEBUG)) {
+      // eslint-disable-next-line no-console
+      console.log(this.formatMessage('DEBUG', message, data));
+    }
+  }
+
+  info(message: string, data?: any): void {
+    if (this.shouldLog(LogLevel.INFO)) {
+      // eslint-disable-next-line no-console
+      console.log(this.formatMessage('INFO', message, data));
+    }
+  }
+
+  warn(message: string, data?: any): void {
+    if (this.shouldLog(LogLevel.WARN)) {
+      console.warn(this.formatMessage('WARN', message, data));
+    }
+  }
+
+  error(message: string, error?: Error | any): void {
+    if (this.shouldLog(LogLevel.ERROR)) {
+      const errorData =
+        error instanceof Error
+          ? {
+              name: error.name,
+              message: error.message,
+              stack: error.stack,
+            }
+          : error;
+      console.error(this.formatMessage('ERROR', message, errorData));
+    }
+  }
+
+  setLevel(level: LogLevel): void {
+    this.config.level = level;
+  }
+
+  setContext(context: string): void {
+    this.config.context = context;
+  }
+}
+
+export const createLogger = (context?: string): Logger => {
+  return new Logger({ context });
+};
+
+export const logger = new Logger();

@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "@yyc3/model-adapter",
@@ -8,7 +9,7 @@
         "@azure/openai": "^1.0.0-beta.12",
         "@google/generative-ai": "^0.15.0",
         "eventemitter3": "^5.0.1",
-        "openai": "^4.20.1",
+        "openai": "^4.104.0",
         "zod": "^3.22.4",
       },
       "devDependencies": {
