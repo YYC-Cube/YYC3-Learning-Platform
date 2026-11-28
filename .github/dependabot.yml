@@ -64,6 +64,11 @@ updates:
           - '*eslint*'
           - '*prettier*'
           - '*typescript*'
+      # patch/minor 兜底归组（T1 恒久减负）：未命中上面模式组的依赖按语义级别归并
+      patch-and-minor:
+        update-types:
+          - 'version-update:semver-patch'
+          - 'version-update:semver-minor'
 
   # Enable version updates for GitHub Actions
   - package-ecosystem: 'github-actions'
@@ -92,6 +97,11 @@ updates:
         patterns:
           - 'actions/setup*'
           - 'actions/checkout*'
+      # patch/minor 兜底归组（T1 恒久减负）：未命中上面模式组的 action 按语义级别归并
+      patch-and-minor:
+        update-types:
+          - 'version-update:semver-patch'
+          - 'version-update:semver-minor'
 
   # Enable updates for Docker dependencies
   - package-ecosystem: 'docker'
